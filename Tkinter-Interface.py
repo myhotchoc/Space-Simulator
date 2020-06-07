@@ -25,11 +25,31 @@ btn.grid(row = 2, column = 0)
 
 
 base = tk.Tk()
-base.titale("Planet Information")
-title = tk.Label(base, text = "Select a planet to view information about it")
+base.title("Planet Information")
+title = tk.Label(base, text = "Select a planet to view")
+title2 = tk.Label(base, text = "information about it.")
 title.grid(row = 0, column = 0)
+title2.grid(row=0, column = 1)
 
+def PrintInfo():
+    print("WORKING")
 
+merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo())
+merc.grid(row = 1, column = 0)
+ven = tk.Button(base, text = "Venus", command = lambda: PrintInfo())
+ven.grid(row=1, column = 1)
+ear = tk.Button(base, text = "Earth", command = lambda: PrintInfo())
+ear.grid(row=2, column = 0)
+mar = tk.Button(base, text = "Mars", command = lambda: PrintInfo())
+mar.grid(row=2, column = 1)
+jup = tk.Button(base, text = "Jupiter", command = lambda: PrintInfo())
+jup.grid(row=3, column = 0)
+sat = tk.Button(base, text = "Saturn", command = lambda: PrintInfo())
+sat.grid(row=3, column = 1)
+ura = tk.Button(base, text = "Uranus", command = lambda: PrintInfo())
+ura.grid(row=4, column = 0)
+nep = tk.Button(base, text = "Neptune", command = lambda: PrintInfo())
+nep.grid(row=4, column = 1)
 
 
 base.mainloop()
