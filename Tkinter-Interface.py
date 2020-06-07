@@ -21,9 +21,11 @@ planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uran
 # merc = tk. Radiobutton(root, text= planets_array[0], variable=v).pack()
 # print(merc)
 planets_selection = tk.Listbox(root, selectmode = 'multiple', height = 8 )
+
 for item in planets_array:
     planets_selection.insert(tk.END, item)
-planets_selection.pack()
+    
+
 
 array = planets_selection.curselection()
 
