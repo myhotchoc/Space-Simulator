@@ -33,7 +33,7 @@ while game_loop:
     # Gets list of all events
     for item in pygame.event.get():
         ## Quits loop if close button pressed
-        if item.type == pygame.QUIT():
+        if item.type == pygame.QUIT:
             game_loop = False
             
     # Black background, white circle in centre
