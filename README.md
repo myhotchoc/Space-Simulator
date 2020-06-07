@@ -11,4 +11,9 @@ We need:
 * the orbital distances (i dont know what the technical term would be?)
 * the scale we will use for size
 
-
+**TO DO:**
+* Figure out trajectory
+* Figure out planet speed (some physics equation?? Time to get the A Level phys textbook out
+* Have planets move around their own trajectory at right speed
+* Tkinter panel that shows information on each planet speed size etc
+* Tkinter options panel to add more planets
