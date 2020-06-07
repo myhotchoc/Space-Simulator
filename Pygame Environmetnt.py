@@ -7,6 +7,7 @@ Created on Sun Jun  7 15:32:45 2020
 
 import pygame
 import random
+import math
 
 ## All data in metres
 mercury_to_sun = 64956000000
@@ -57,17 +58,29 @@ DARKBLUE = (19, 27, 246) #FOR NEPTUNE
 BLACK = (0, 0, 0)
 
 class Planet(object):
-    def __init__(self, radius, orbital_dist, colour, speed, window):
+    def __init__(self, radius, orbital_dist, mass, colour, window):
         self.radius = radius
         self.orbital_dist = orbital_dist
+        self.mass = mass
         self.colour = colour
-        self.speed = speed
         self.window = window
+        
+        self.speed = (( (6.67408*(10**-11)) * self.mass/self.orbital_dist) ** 0.5)/100000
+
         
         #pygame.draw.circle(scree)
     
     def placePlanet(self):
         planet_pos = (centre[0], centre[1] - self.orbital_dist)
+        
+        self.planet = pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
+    
+    def movePlanet(self, theta):
+        
+        delta_x = int(self.orbital_dist * math.sin(theta))
+        delta_y = int(self.orbital_dist * math.cos(theta))
+        
+        planet_pos = (self.planet.left - delta_x, self.planet.top - delta_y)
         
         pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
 
@@ -83,11 +96,52 @@ centre = (int(win_size[0]/2), int(win_size[1]/2))
 #Initialise window
 pygame.init()
 
+# Black background, white circle in centre
+screen.fill(BLACK)
+    
+
 ## Main window loop
 game_loop = True
 clock = pygame.time.Clock()
 
+mercury = Planet(4, 70, mercury_mass, GREY, screen)
+mercury.placePlanet()
+
+venus = Planet(8, 90, venus_mass, BLOODORANGE, screen)
+venus.placePlanet()
+
+earth = Planet(9, 110, earth_mass, BLUE, screen)
+earth.placePlanet()
+
+mars = Planet(5, 126, mars_mass, DUST, screen)
+mars.placePlanet()
+
+jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen)
+jupiter.placePlanet()
+
+saturn = Planet(16, 223, saturn_mass, YELLOW, screen)
+saturn.placePlanet()
+
+uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen)
+uranus.placePlanet()
+
+neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen)
+neptune.placePlanet()
+
+planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+
+theta = 0
+
 while game_loop:
+    
+
+    
+    ## (win, col, pos, r)
+    sun = pygame.draw.circle(screen, ORANGE, centre, 50)
+    
+    ##planet=(r, orbit_r, col, speed, window)
+    
+    
     
     # Gets list of all events
     for item in pygame.event.get():
@@ -95,40 +149,13 @@ while game_loop:
         
         if item.type == pygame.QUIT:
             game_loop = False
+        
+        if item.type == pygame.MOUSEBUTTONUP:
+            for i in planets:
+                i.movePlanet(math.radians(theta))
+            theta+= 10
+            print (theta)
             
-    # Black background, white circle in centre
-    screen.fill(BLACK)
-    
-    ## (win, col, pos, r)
-    sun = pygame.draw.circle(screen, ORANGE, centre, 50)
-    
-    ##planet=(r, orbit_r, col, speed, window)
-    
-    mercury = Planet(4, 70, GREY, 10, screen)
-    mercury.placePlanet()
-    
-    venus = Planet(8, 90, BLOODORANGE, 10, screen)
-    venus.placePlanet()
-    
-    earth = Planet(9, 110, BLUE, 10, screen)
-    earth.placePlanet()
-    
-    mars = Planet(5, 126, DUST, 10, screen)
-    mars.placePlanet()
-    
-    jupiter = Planet(20, 166, JUPITER_COL, 10, screen)
-    jupiter.placePlanet()
-    
-    saturn = Planet(16, 223, YELLOW, 10, screen)
-    saturn.placePlanet()
-    
-    uranus = Planet(13, 306, TURQUOISE, 10, screen)
-    uranus.placePlanet()
-    
-    neptune = Planet(12, 423, DARKBLUE, 10, screen)
-    neptune.placePlanet()
-
-    
     #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
     
     # Update Screen, set framerate
