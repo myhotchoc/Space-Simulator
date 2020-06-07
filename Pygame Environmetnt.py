@@ -1,7 +1,7 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jun  7 15:32:45 2020
-
 @author: Danny and Jenni (but she smells)
 """
 
@@ -23,7 +23,7 @@ mercury_mass = 328500000000000000000000
 venus_mass = 4867000000000000000000000
 earth_mass = 5972000000000000000000000
 mars_mass = 639000000000000000000000
-jupter_mass = 1898000000000000000000000000
+jupiter_mass = 1898000000000000000000000000
 saturn_mass = 568300000000000000000000000
 uranus_mass = 86810000000000000000000000
 neptune_mass = 102400000000000000000000000
@@ -38,15 +38,23 @@ saturn_radius = 58232000
 uranus_radius = 25362000
 neptune_radius = 24622000
 
+planet_data = [mercury_to_sun, venus_to_sun, earth_to_sun, mars_to_sun,
+               jupiter_to_sun, saturn_to_sun, uranus_to_sun, neptune_to_sun,
+               mercury_mass, venus_mass, earth_mass, mars_mass, jupiter_mass,
+               saturn_mass, uranus_mass, neptune_mass, mercury_radius, venus_radius,
+               earth_radius, mars_radius, jupiter_radius, saturn_radius,
+               uranus_radius, neptune_radius]
+
 ORANGE = (255, 128, 0) #FOR THE SUN
 GREY = (128, 128, 128) #FOR MERCURY
 BLOODORANGE = (255, 102, 0) #FOR VENUS
 BLUE = (0, 128, 255) #FOR EARTH
 DUST = (245, 202, 139) #FOR MARS
-JUPITER = (252, 91, 11) # COME UP WITH YOUR OWN NAME I HAVE NO CLUE
+JUPITER_COL = (252, 91, 11) # COME UP WITH YOUR OWN NAME I HAVE NO CLUE
 YELLOW = (242, 224, 63) #FOR SATURN
 TURQUOISE = (125, 235, 224) #FOR UR ANUS
 DARKBLUE = (19, 27, 246) #FOR NEPTUNE
+BLACK = (0, 0, 0)
 
 class Planet(object):
     def __init__(self, radius, orbital_dist, colour, speed, window):
@@ -59,7 +67,6 @@ class Planet(object):
         #pygame.draw.circle(scree)
     
     def placePlanet(self):
-        
         planet_pos = (centre[0], centre[1] - self.orbital_dist)
         
         pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
@@ -88,29 +95,38 @@ while game_loop:
         
         if item.type == pygame.QUIT:
             game_loop = False
-        
-        if item.type == pygame.MOUSEBUTTONUP:
-            p1 = Planet(50, 1, RED, 10, screen)
-            p1.placePlanet()
-        
             
     # Black background, white circle in centre
     screen.fill(BLACK)
     
     ## (win, col, pos, r)
-    sun = pygame.draw.circle(screen, YELLOW, centre, 40)
+    sun = pygame.draw.circle(screen, ORANGE, centre, 50)
     
-    p1 = Planet(10, 60, RED, 10, screen)
-    p1.placePlanet()
+    ##planet=(r, orbit_r, col, speed, window)
     
-    p2 = Planet(15, 120, GREEN, 10, screen)
-    p2.placePlanet()
+    mercury = Planet(4, 70, GREY, 10, screen)
+    mercury.placePlanet()
     
-    earth = Planet(10, 190, BLUE, 10, screen)
-    p3.placePlanet()
+    venus = Planet(8, 90, BLOODORANGE, 10, screen)
+    venus.placePlanet()
     
-    p4 = Planet(20, 250, PURPLE, 10, screen)
-    p4.placePlanet()
+    earth = Planet(9, 110, BLUE, 10, screen)
+    earth.placePlanet()
+    
+    mars = Planet(5, 126, DUST, 10, screen)
+    mars.placePlanet()
+    
+    jupiter = Planet(20, 166, JUPITER_COL, 10, screen)
+    jupiter.placePlanet()
+    
+    saturn = Planet(16, 203, YELLOW, 10, screen)
+    saturn.placePlanet()
+    
+    uranus = Planet(13, 306, TURQUOISE, 10, screen)
+    uranus.placePlanet()
+    
+    neptune = Planet(12, 423, DARKBLUE, 10, screen)
+    neptune.placePlanet()
 
     
     #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
