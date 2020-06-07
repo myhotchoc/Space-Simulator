@@ -5,6 +5,8 @@ Created on Sun Jun  7 17:29:45 2020
 @author: Danny and Jenni (but he smells)
 
 NEVERMIND ILL FIND SOEMONE LIKE YOUUUUUUUUUU
+
+COMEEEEE AS YOU AREEEE AS YOU WERE AS I WAAAAAANT YOU TO BE
 """
 
 import tkinter as tk
