@@ -48,6 +48,7 @@ while game_loop:
     # Black background, white circle in centre
     screen.fill(BLACK)
     circle1 = pygame.draw.circle(screen, YELLOW, pos, 40)
+    ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
     
     # Update Screen, set framerate
     pygame.display.flip()
