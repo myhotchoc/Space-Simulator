@@ -3,31 +3,26 @@
 Created on Sun Jun  7 17:29:45 2020
 
 @author: Danny and Jenni (but he smells)
-
-NEVERMIND ILL FIND SOEMONE LIKE YOUUUUUUUUUU
 """
 
 import tkinter as tk
 from tkinter import ttk
 
 root = tk.Tk()
-
 v = tk.StringVar()
 
-#planet = tk.Label(root, message = 'Choose which planets you want:')
+title = tk.Label(root, text = 'Choose which planets you want:')
+title.grid(row= 0, column = 0)
 planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 
-
-# merc = tk. Radiobutton(root, text= planets_array[0], variable=v).pack()
-# print(merc)
+#creates a list of the avaliable planets to be shown on the pygame interface
 planets_selection = tk.Listbox(root, selectmode = 'multiple', height = 8 )
-
 for item in planets_array:
     planets_selection.insert(tk.END, item)
-    
+planets_selection.grid(row = 1, column = 0)
 
+#produces a list of the indices of the planets selected - starting from zero
+btn = tk.Button(root, text='Done', command=lambda: print(planets_selection.curselection()))
+btn.grid(row = 2, column = 0)
 
-array = planets_selection.curselection()
-
-print(array)
 root.mainloop()
