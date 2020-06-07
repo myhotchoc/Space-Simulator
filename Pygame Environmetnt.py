@@ -17,6 +17,36 @@ YELLOW = (255,255,0)
 BLUE = (0, 0, 255)
 PURPLE = (238, 130, 238)
 
+## All data in metres
+mercury_to_sun = 64956000000
+venus_to_sun = 108660000000
+earth_to_sun = 151840000000
+mars_to_sun = 211250000000
+jupiter_to_sun = 773770000000
+saturn_to_sun = 1495600000000
+uranus_to_sun = 2961800000000
+neptune_to_sun = 4476700000000
+
+## All data in kg
+mercury_mass = 328500000000000000000000
+venus_mass = 4867000000000000000000000
+earth_mass = 5972000000000000000000000
+mars_mass = 639000000000000000000000
+jupter_mass = 1898000000000000000000000000
+saturn_mass = 568300000000000000000000000
+uranus_mass = 86810000000000000000000000
+neptune_mass = 102400000000000000000000000
+
+## All data in metres
+mercury_radius = 2438700
+venus_radius = 6051800
+earth_radius = 6371000
+mars_radius = 3389500
+jupiter_radius = 69911000
+saturn_radius = 58232000
+uranus_radius = 25362000
+neptune_radius = 24622000
+
 class Planet(object):
     def __init__(self, radius, orbital_dist, colour, speed, window):
         self.radius = radius
@@ -75,7 +105,7 @@ while game_loop:
     p2 = Planet(15, 120, GREEN, 10, screen)
     p2.placePlanet()
     
-    p3 = Planet(10, 190, BLUE, 10, screen)
+    earth = Planet(10, 190, BLUE, 10, screen)
     p3.placePlanet()
     
     p4 = Planet(20, 250, PURPLE, 10, screen)
