@@ -16,7 +16,7 @@ RED = (255, 0, 0)
 YELLOW = (255,255,0)
 
 # Window size
-win_size = (1000, 500)
+win_size = (1000, 1000)
 
 #Screen object
 screen = pygame.display.set_mode(win_size)
