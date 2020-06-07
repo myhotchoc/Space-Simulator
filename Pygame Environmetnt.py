@@ -14,8 +14,19 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 YELLOW = (255,255,0)
-BLUE = (0, 0, 255)
 PURPLE = (238, 130, 238)
+
+ORANGE = (255, 128, 0) #FOR THE SUN
+GREY = (128, 128, 128) #FOR MERCURY
+BLOODORANGE = (255, 102, 0) #FOR VENUS
+BLUE = (0, 128, 255) #FOR EARTH
+DUST = (245, 202, 139) #FOR MARS
+JUPITER = (252, 91, 11) # COME UP WITH YOUR OWN NAME I HAVE NO CLUE
+YELLOW = (242, 224, 63) #FOR SATURN
+TURQUOISE = (125, 235, 224) #FOR UR ANUS
+DARKBLUE = (19, 27, 246) #FOR NEPTUNE
+
+
 
 class Planet(object):
     def __init__(self, radius, orbital_dist, colour, speed, window):
