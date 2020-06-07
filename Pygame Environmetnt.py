@@ -15,6 +15,13 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 YELLOW = (255,255,0)
 
+class Planet(object):
+    def __init__(self, radius, orbital_dist, colour, speed):
+        self.radius = radius
+        self.orbital_dist = orbital_dist
+        self.colour = colour
+        self.speed = speed
+
 # Window size
 win_size = (1000, 1000)
 
@@ -48,6 +55,8 @@ while game_loop:
     # Black background, white circle in centre
     screen.fill(BLACK)
     circle1 = pygame.draw.circle(screen, YELLOW, pos, 40)
+
+    
     ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
     
     # Update Screen, set framerate
