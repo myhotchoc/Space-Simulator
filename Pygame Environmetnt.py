@@ -119,7 +119,7 @@ while game_loop:
     jupiter = Planet(20, 166, JUPITER_COL, 10, screen)
     jupiter.placePlanet()
     
-    saturn = Planet(16, 203, YELLOW, 10, screen)
+    saturn = Planet(16, 223, YELLOW, 10, screen)
     saturn.placePlanet()
     
     uranus = Planet(13, 306, TURQUOISE, 10, screen)
