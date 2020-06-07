@@ -2,7 +2,7 @@
 """
 Created on Sun Jun  7 15:32:45 2020
 
-@author: Danny and Jenni (but he smells)
+@author: Danny and Jenni (but she smells)
 """
 
 import pygame
