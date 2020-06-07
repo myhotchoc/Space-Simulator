@@ -4,15 +4,14 @@ Created on Sun Jun  7 17:29:45 2020
 
 @author: Danny and Jenni (but he smells)
 """
-
 import tkinter as tk
 
-root = tk.Tk()
-v = tk.StringVar()
+planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 
+root = tk.Tk()
+root.title("Planets")
 title = tk.Label(root, text = 'Choose which planets you want:')
 title.grid(row= 0, column = 0)
-planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 
 #creates a list of the avaliable planets to be shown on the pygame interface
 planets_selection = tk.Listbox(root, selectmode = 'multiple', height = 8 )
@@ -24,4 +23,14 @@ planets_selection.grid(row = 1, column = 0)
 btn = tk.Button(root, text='Done', command=lambda: print(planets_selection.curselection()))
 btn.grid(row = 2, column = 0)
 
+
+base = tk.Tk()
+base.titale("Planet Information")
+title = tk.Label(base, text = "Select a planet to view information about it")
+title.grid(row = 0, column = 0)
+
+
+
+
+base.mainloop()
 root.mainloop()
