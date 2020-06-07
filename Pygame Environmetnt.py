@@ -13,9 +13,10 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+YELLOW = (255,255,0)
 
 # Window size
-win_size = (500, 500)
+win_size = (1000, 500)
 
 #Screen object
 screen = pygame.display.set_mode(win_size)
@@ -40,12 +41,13 @@ while game_loop:
         if item.type == pygame.QUIT:
             game_loop = False
         
-        if item.type == pygame.MOUSEBUTTONUP:
-            pos = (random.randint(0, win_size[0]), random.randint(0, win_size[1]))
+        #if item.type == pygame.MOUSEBUTTONUP:
+            #pos = (random.randint(0, win_size[0]), random.randint(0, win_size[1]))
+        #soz but this isn't needed becuase the sun doesn't move
             
     # Black background, white circle in centre
     screen.fill(BLACK)
-    circle1 = pygame.draw.circle(screen, WHITE, pos, 10)
+    circle1 = pygame.draw.circle(screen, YELLOW, pos, 40)
     
     # Update Screen, set framerate
     pygame.display.flip()
