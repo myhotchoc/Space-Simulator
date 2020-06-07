@@ -25,6 +25,7 @@ for item in planets_array:
     planets_selection.insert(tk.END, item)
 planets_selection.pack()
 
-array = planets_selection.get(tk.ACTIVE)
+array = planets_selection.curselection()
+
 print(array)
 root.mainloop()
