@@ -38,6 +38,8 @@ saturn_radius = 58232000
 uranus_radius = 25362000
 neptune_radius = 24622000
 
+#would it be better to put this in a file and read the data from a file????? ^^^^^
+
 planet_data = [mercury_to_sun, venus_to_sun, earth_to_sun, mars_to_sun,
                jupiter_to_sun, saturn_to_sun, uranus_to_sun, neptune_to_sun,
                mercury_mass, venus_mass, earth_mass, mars_mass, jupiter_mass,
@@ -50,9 +52,9 @@ GREY = (128, 128, 128) #FOR MERCURY
 BLOODORANGE = (255, 102, 0) #FOR VENUS
 BLUE = (0, 128, 255) #FOR EARTH
 DUST = (245, 202, 139) #FOR MARS
-JUPITER_COL = (252, 91, 11) # COME UP WITH YOUR OWN NAME I HAVE NO CLUE
+JUPITER_COL = (252, 91, 11) #NICE NAME  
 YELLOW = (242, 224, 63) #FOR SATURN
-TURQUOISE = (125, 235, 224) #FOR UR ANUS
+TURQUOISE = (125, 235, 224) #FOR UR ANUS -------- i bet you didnt notice this
 DARKBLUE = (19, 27, 246) #FOR NEPTUNE
 BLACK = (0, 0, 0)
 
@@ -64,7 +66,7 @@ class Planet(object):
         self.speed = speed
         self.window = window
         
-        #pygame.draw.circle(scree)
+        #pygame.draw.circle(screen)
     
     def placePlanet(self):
         planet_pos = (centre[0], centre[1] - self.orbital_dist)
