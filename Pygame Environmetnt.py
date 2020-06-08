@@ -99,8 +99,7 @@ centre = (int(win_size[0]/2), int(win_size[1]/2))
 #Initialise window
 pygame.init()
 
-# Black background, white circle in centre
-screen.fill(BLACK)
+
     
 
 ## Main window loop
@@ -137,7 +136,8 @@ theta = 0
 
 while game_loop:
     
-
+    # Black background, white circle in centre
+    screen.fill(BLACK)
     
     ## (win, col, pos, r)
     sun = pygame.draw.circle(screen, ORANGE, centre, 50)
@@ -153,18 +153,27 @@ while game_loop:
         if item.type == pygame.QUIT:
             game_loop = False
         
-        if item.type == pygame.MOUSEBUTTONUP:
-            
-            for theta in range(360):
-                for i in planets:
-                    new_pos = i.movePlanet(math.radians(theta))
-                    pygame.draw.circle(screen, i.colour, new_pos, i.radius)
-                    
-                time.sleep(0.01)
-                pygame.display.flip()
-                clock.tick(60)
+# =============================================================================
+#         if item.type == pygame.MOUSEBUTTONUP:
+#             
+#             for theta in range(360):
+#                 for i in planets:
+#                     new_pos = i.movePlanet(math.radians(theta))
+#                     pygame.draw.circle(screen, i.colour, new_pos, i.radius)
+#                     
+#                 time.sleep(0.01)
+#                 pygame.display.flip()
+#                 clock.tick(60)
+# =============================================================================
             
     #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
+    for i in planets:
+        new_pos = i.movePlanet(math.radians(theta))
+        pygame.draw.circle(screen, i.colour, new_pos, i.radius)
+        pygame.display.flip()
+        clock.tick(60)
+        
+    theta += 5
     
     # Update Screen, set framerate
     pygame.display.flip()
