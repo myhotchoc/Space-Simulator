@@ -8,6 +8,7 @@ Created on Sun Jun  7 15:32:45 2020
 import pygame
 import random
 import math
+import time
 
 ## All data in metres
 mercury_to_sun = 64956000000
@@ -77,12 +78,14 @@ class Planet(object):
     
     def movePlanet(self, theta):
         
-        delta_x = int(self.orbital_dist * math.sin(theta))
-        delta_y = int(self.orbital_dist * math.cos(theta))
+        delta_x = int(((self.orbital_dist ) * math.cos(theta)) + centre[0])
+        delta_y = int(((self.orbital_dist ) * math.sin(theta)) + centre[1])
         
-        planet_pos = (self.planet.left - delta_x, self.planet.top - delta_y)
+        planet_pos = (delta_x, delta_y)
         
-        pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
+        return planet_pos
+        #pygame.blit(self.window, planet_pos)
+        #pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
 
 # Window size
 win_size = (1000, 1000)
@@ -151,10 +154,15 @@ while game_loop:
             game_loop = False
         
         if item.type == pygame.MOUSEBUTTONUP:
-            for i in planets:
-                i.movePlanet(math.radians(theta))
-            theta+= 10
-            print (theta)
+            
+            for theta in range(360):
+                for i in planets:
+                    new_pos = i.movePlanet(math.radians(theta))
+                    pygame.draw.circle(screen, i.colour, new_pos, i.radius)
+                    
+                time.sleep(0.01)
+                pygame.display.flip()
+                clock.tick(60)
             
     #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
     
