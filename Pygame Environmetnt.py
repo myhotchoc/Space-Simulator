@@ -66,7 +66,7 @@ class Planet(object):
         self.colour = colour
         self.window = window
         
-        self.speed = (( (6.67408*(10**-11)) * self.mass/self.orbital_dist) ** 0.5)/100000
+        self.speed = (( (6.67408*(10**-1)) * self.mass/self.orbital_dist) ** 0.5)/100000
 
         
         #pygame.draw.circle(scree)
