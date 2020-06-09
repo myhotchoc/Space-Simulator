@@ -34,33 +34,32 @@ c2_pos = [int(4 * centre[0]/3), centre[1]]
 #c1_mass = 5.972*10**24
 #c2_mass = 7.35*10**22
 
-c1_mass = 200
-c2_mass = 250
 
-c1_u = (10*math.cos(math.pi/4), 20*math.sin(math.pi/6))
-c2_u = (20*math.cos(math.pi/4), 20*math.sin(math.pi/4))
-
-c1_v = (0, 0)
-c2_v = (0, 0)
-
-
+def resolve(mag, t):
+    return (mag * math.cos(t), mag * math.sin(t))
 
 def changePos():
     #pythagorous to find shortest distance
     distance = math.sqrt((c1_pos[0] - c2_pos[0])**2 + (c1_pos[1] - c2_pos[1])**2)
     
     #force = (((6.674 * (10**-11)) * c1_mass * c2_mass) / distance) / 10**11
-    force = (((100 * c1_mass * c2_mass) / distance))
+    
+    ## I FORGOT TO SQUARE THE GODDAMN DISTANCE ITS AN INVERSE SQAURE LAW THATS THE WHOLE DAMN POINT HOW DID I FORGET
+    ## my physics teacher can never see this mistake
+    force = (((1000 * c1_mass * c2_mass) / distance**2))
     
     #calculating the acceleration of the planets using f = ma
     c1_a = force/c1_mass
     c2_a = force/c2_mass
     
     #print(((((c1_v[0]) ** 2) - ((c1_u[0]) ** 2))/(2 * c1_a), (((c1_v[1]) ** 2) - ((c1_u[1]) ** 2))/(2 * c1_a)))
+<<<<<<< Updated upstream
 
 
     s = ((((c1_v[0]) ** 2) - ((c1_u[0]) ** 2))/(2 * c1_a), (((c1_v[1]) ** 2) - ((c1_u[1]) ** 2))/(2 * c1_a)) 
     #print(s)
+=======
+>>>>>>> Stashed changes
     
     #velocity formula to find the displacement v^2 - u^2 = 2as
     #calculates the displacemnt in terms of x,y
@@ -68,6 +67,7 @@ def changePos():
     ##this is the exact same as the line above but whatevs
     ##i hope you actually read these comments
     c2_s = ((((c2_v[0]) ** 2) - ((c2_u[0]) ** 2))/(2 * c2_a), (((c2_v[1]) ** 2) - ((c2_u[1]) ** 2))/(2 * c2_a))
+    
 
     #print ('f: ', force)
     #print (c1_s, c2_s)
@@ -90,6 +90,17 @@ def changePos():
     print()
 
 
+c1_u = resolve(0, 0)
+c2_u = resolve(10, math.pi/2)
+
+c1_v = resolve(0, 0)
+c2_v = resolve(0, 0)
+
+c1_mass = 5
+c2_mass = 15
+
+colours = [(255, 0, 0), (0, 0, 255)]
+
 win_loop = True
 while win_loop:
     #makes the screen blank with two planets in their initial position
@@ -99,6 +110,7 @@ while win_loop:
     c2 = pygame.draw.circle(screen, (0, 0, 255), c2_pos, 20)
     changePos()
     
+
     
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
@@ -106,5 +118,7 @@ while win_loop:
     
     pygame.display.flip()
     clock.tick(60)
-    
+
+
+
 pygame.quit()
