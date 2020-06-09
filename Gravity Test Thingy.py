@@ -30,11 +30,11 @@ c2_pos = [int(4 * centre[0]/3), centre[1]]
 #c1_mass = 5.972*10**24
 #c2_mass = 7.35*10**22
 
-c1_mass = 30
-c2_mass = 20
+c1_mass = 200
+c2_mass = 250
 
 c1_u = (10*math.cos(math.pi/4), 20*math.sin(math.pi/6))
-c2_u = (20*math.cos(math.pi/4), 40*math.sin(math.pi/4))
+c2_u = (20*math.cos(math.pi/4), 20*math.sin(math.pi/4))
 
 c1_v = (0, 0)
 c2_v = (0, 0)
@@ -45,7 +45,7 @@ def changePos():
     distance = math.sqrt((c1_pos[0] - c2_pos[0])**2 + (c1_pos[1] - c2_pos[1])**2)
     
     #force = (((6.674 * (10**-11)) * c1_mass * c2_mass) / distance) / 10**11
-    force = (((500 * c1_mass * c2_mass) / distance))
+    force = (((100 * c1_mass * c2_mass) / distance))
     
     c1_a = force/c1_mass
     c2_a = force/c2_mass
