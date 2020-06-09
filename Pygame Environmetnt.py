@@ -81,9 +81,10 @@ class Planet(object):
         ##why is this self. and not just planet???
     
     def movePlanet(self, theta):
-        self.theta += 0.3
-        self.theta1 += 0.3
-        if self.theta >= 6.283:
+        self.theta += 0.05 
+        self.theta1 += 0.05
+
+        if self.theta >= 6:
             self.theta = 1
         else:
             pass
@@ -117,28 +118,28 @@ pygame.init()
 game_loop = True
 clock = pygame.time.Clock()
 
-mercury = Planet(4, 70, mercury_mass, GREY, screen, 2.4, 0.9)
+mercury = Planet(4, 70, mercury_mass, GREY, screen, 0.8, 0.9)
 mercury.placePlanet()
 
-venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 0.4, 3.6)
+venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 1.7, 1.7)
 venus.placePlanet()
 
-earth = Planet(9, 110, earth_mass, BLUE, screen, 0.567, 2.4)
+earth = Planet(9, 110, earth_mass, BLUE, screen, 2.6, 2.6)
 earth.placePlanet()
 
-mars = Planet(5, 126, mars_mass, DUST, screen, 1.754, 2.4)
+mars = Planet(5, 126, mars_mass, DUST, screen, 3.1, 3.1)
 mars.placePlanet()
 
-jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 2.89, 3.7)
+jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 3.875, 3.8)
 jupiter.placePlanet()
 
-saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 4.72, 4.72)
+saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 4.65, 4.7)
 saturn.placePlanet()
 
-uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 1.84, 2.4)
+uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 5.4, 5.4)
 uranus.placePlanet()
 
-neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 1.23, 3.4)
+neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 6.2, 6.2)
 neptune.placePlanet()
 
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
@@ -190,7 +191,7 @@ while game_loop:
     pygame.display.flip() 
     ##what does this do??? it works with and without it
 
-    clock.tick(60)
+    clock.tick(20)
 
 # Exit
 pygame.quit()
