@@ -60,7 +60,7 @@ def changePos():
 
 
     s = ((((c1_v[0]) ** 2) - ((c1_u[0]) ** 2))/(2 * c1_a), (((c1_v[1]) ** 2) - ((c1_u[1]) ** 2))/(2 * c1_a)) 
-    print(s)
+    #print(s)
     
     #velocity formula to find the displacement v^2 - u^2 = 2as
     #calculates the displacemnt in terms of x,y
@@ -69,8 +69,8 @@ def changePos():
     ##i hope you actually read these comments
     c2_s = ((((c2_v[0]) ** 2) - ((c2_u[0]) ** 2))/(2 * c2_a), (((c2_v[1]) ** 2) - ((c2_u[1]) ** 2))/(2 * c2_a))
 
-    print ('f: ', force)
-    print (c1_s, c2_s)
+    #print ('f: ', force)
+    #print (c1_s, c2_s)
     
     if c1_s[1] > 5: #is 5 random or does it have meaning
         c1_s = 2 #same with 2???
@@ -82,6 +82,12 @@ def changePos():
     c1_pos[1] += int(c1_s[1])
     c2_pos[0] += int(c2_s[0])
     c2_pos[1] += int(c2_s[1])
+
+    print(c1_pos[0])
+    print(c1_pos[1])
+    print(c2_pos[0])
+    print(c2_pos[1])
+    print()
 
 
 win_loop = True
