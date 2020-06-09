@@ -10,7 +10,7 @@ import random
 import math
 
 ## Gravitational constant but I changed the value because this is my universe and I am god
-G = 10
+G = 100
 
 ## Resolves vector into x and y components, returns (x, y) for <magnitude, angle>
 def resolve(mag, t):
@@ -106,8 +106,8 @@ clock = pygame.time.Clock()
 
 ## Body(mass, u(mag,dir), pos(x,y), col(rgb))
 ## Defining 2 bodies
-body1 = Body(100, (10, math.pi/2), (int(win_size[1]/4), int(win_size[1]/2)), (255,0,0))
-body2 = Body(100, (0, 0), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
+body1 = Body(100, (10, math.pi), (int(win_size[1]/4), int(win_size[1]/2)), (255,0,0))
+body2 = Body(100, (10, math.pi/6), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
 
 ## Window runtime loop
 win_loop = True
