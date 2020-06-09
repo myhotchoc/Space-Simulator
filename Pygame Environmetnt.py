@@ -169,7 +169,8 @@ while game_loop:
     for i in planets:
         new_pos = i.movePlanet(math.radians(theta))
         pygame.draw.circle(screen, i.colour, new_pos, i.radius)
-        pygame.display.flip()
+        #pygame.display.flip()
+        #this stopped the planets like flashing idk if this is right now?
         clock.tick(60)
         
     theta += 1
