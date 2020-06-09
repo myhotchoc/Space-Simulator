@@ -10,7 +10,7 @@ import random
 import math
 
 ## Gravitational constant but I changed the value because this is my universe and I am god
-G = 100 
+G = 10
 
 ## Resolves vector into x and y components, returns (x, y) for <magnitude, angle>
 def resolve(mag, t):
