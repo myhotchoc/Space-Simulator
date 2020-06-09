@@ -14,7 +14,7 @@ G = 100
 
 ## Resolves vector into x and y components, returns (x, y) for <magnitude, angle>
 def resolve(mag, t):
-    return (mag * math.sin(t), mag * math.cos(t))
+    return (mag * math.cos(t), mag * math.sin(t))
 
 ## Class for body
 class Body(object):
@@ -93,7 +93,7 @@ class Body(object):
 
     ## Change position of body
     def changePos(self, s):
-        self.pos = (int(s[0]), int(s[1]))
+        self.pos = (int(s[1]), int(s[0]))
         
 ## Setting window size, defining screen
 win_size = (750, 750)
@@ -110,8 +110,8 @@ clock = pygame.time.Clock()
 
 ## Body(mass, u(mag,dir), pos(x,y), col(rgb))
 ## Defining 2 bodies
-body1 = Body(50, (2, math.pi), (int(win_size[1]/4), int(win_size[1]/2)), (255,0,0))
-body2 = Body(100, (-2, math.pi/2), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
+body1 = Body(100, (0, 0), (int(win_size[1]/2), int(win_size[1]/2)), (255,0,0))
+body2 = Body(10, (0, 0), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
 
 ## Window runtime loop
 win_loop = True
