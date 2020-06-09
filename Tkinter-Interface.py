@@ -9,6 +9,17 @@ import tkinter as tk
 planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 data_array =  []
 
+ORANGE = (255, 128, 0) #FOR THE SUN
+GREY = (128, 128, 128) #FOR MERCURY
+BLOODORANGE = (255, 102, 0) #FOR VENUS
+BLUE = (0, 128, 255) #FOR EARTH
+DUST = (245, 202, 139) #FOR MARS
+JUPITER_COL = (252, 91, 11) # COME UP WITH YOUR OWN NAME I HAVE NO CLUE
+YELLOW = (242, 224, 63) #FOR SATURN
+TURQUOISE = (125, 235, 224) #FOR UR ANUS
+DARKBLUE = (19, 27, 246) #FOR NEPTUNE
+BLACK = (0, 0, 0)
+
 root = tk.Tk()
 root.title("Planets")
 title = tk.Label(root, text = 'Choose which planets you want:')
@@ -46,21 +57,21 @@ def PrintInfo(p,q):
     print("")
 
 #creates individual buttons for each planet
-merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo(1,4))
+merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo(1,4), bg = GREY )
 merc.grid(row = 1, column = 0)
-ven = tk.Button(base, text = "Venus", command = lambda: PrintInfo(4,7))
+ven = tk.Button(base, text = "Venus", command = lambda: PrintInfo(4,7), bg = BLOODORANGE)
 ven.grid(row=1, column = 1)
-ear = tk.Button(base, text = "Earth", command = lambda: PrintInfo(7, 10))
+ear = tk.Button(base, text = "Earth", command = lambda: PrintInfo(7, 10), bg = BLUE)
 ear.grid(row=2, column = 0)
-mar = tk.Button(base, text = "Mars", command = lambda: PrintInfo(10, 13))
+mar = tk.Button(base, text = "Mars", command = lambda: PrintInfo(10, 13), bg = DUST)
 mar.grid(row=2, column = 1)
-jup = tk.Button(base, text = "Jupiter", command = lambda: PrintInfo(13, 16))
+jup = tk.Button(base, text = "Jupiter", command = lambda: PrintInfo(13, 16), bg = JUPITER_COL)
 jup.grid(row=3, column = 0)
-sat = tk.Button(base, text = "Saturn", command = lambda: PrintInfo(16, 19))
+sat = tk.Button(base, text = "Saturn", command = lambda: PrintInfo(16, 19), bg = YELLOW)
 sat.grid(row=3, column = 1)
-ura = tk.Button(base, text = "Uranus", command = lambda: PrintInfo(19, 22))
+ura = tk.Button(base, text = "Uranus", command = lambda: PrintInfo(19, 22), bg = TURQUOISE)
 ura.grid(row=4, column = 0)
-nep = tk.Button(base, text = "Neptune", command = lambda: PrintInfo(22, 25))
+nep = tk.Button(base, text = "Neptune", command = lambda: PrintInfo(22, 25), bg = DARKBLUE)
 nep.grid(row=4, column = 1)
 
 base.mainloop()
