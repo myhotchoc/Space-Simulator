@@ -53,13 +53,6 @@ def changePos():
     c2_a = force/c2_mass
     
     #print(((((c1_v[0]) ** 2) - ((c1_u[0]) ** 2))/(2 * c1_a), (((c1_v[1]) ** 2) - ((c1_u[1]) ** 2))/(2 * c1_a)))
-<<<<<<< Updated upstream
-
-
-    s = ((((c1_v[0]) ** 2) - ((c1_u[0]) ** 2))/(2 * c1_a), (((c1_v[1]) ** 2) - ((c1_u[1]) ** 2))/(2 * c1_a)) 
-    #print(s)
-=======
->>>>>>> Stashed changes
     
     #velocity formula to find the displacement v^2 - u^2 = 2as
     #calculates the displacemnt in terms of x,y
