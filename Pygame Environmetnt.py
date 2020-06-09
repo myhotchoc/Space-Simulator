@@ -59,14 +59,17 @@ DARKBLUE = (19, 27, 246) #FOR NEPTUNE
 BLACK = (0, 0, 0)
 
 class Planet(object):
-    def __init__(self, radius, orbital_dist, mass, colour, window):
+    def __init__(self, radius, orbital_dist, mass, colour, window, theta, theta1):
         self.radius = radius
         self.orbital_dist = orbital_dist
         self.mass = mass
         self.colour = colour
         self.window = window
+        self.theta = theta
+        self.theta1 = theta1
         
         self.speed = (( (6.67408*(10**-11)) * self.mass/self.orbital_dist) ** 0.5)/100000
+
 
         
         #pygame.draw.circle(scree)
@@ -78,8 +81,16 @@ class Planet(object):
         ##why is this self. and not just planet???
     
     def movePlanet(self, theta):
-        delta_x = int((((self.orbital_dist ) * math.cos(theta)) + centre[0]))
-        delta_y = int((((self.orbital_dist ) * math.sin(theta)) + centre[1]))
+        self.theta += 0.3
+        self.theta1 += 0.3
+        if self.theta >= 6.283:
+            self.theta = 1
+        else:
+            pass
+
+        delta_x = int((((self.orbital_dist ) * math.cos(self.theta)) + centre[0]))
+        delta_y = int((((self.orbital_dist ) * math.sin(self.theta1)) + centre[1]))
+        #delta_y = int(centre[1] -self.orbital_dist + random.randint(5,8))
         
         planet_pos = (delta_x, delta_y)
         
@@ -106,28 +117,28 @@ pygame.init()
 game_loop = True
 clock = pygame.time.Clock()
 
-mercury = Planet(4, 70, mercury_mass, GREY, screen)
+mercury = Planet(4, 70, mercury_mass, GREY, screen, 2.4, 0.9)
 mercury.placePlanet()
 
-venus = Planet(8, 90, venus_mass, BLOODORANGE, screen)
+venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 0.4, 3.6)
 venus.placePlanet()
 
-earth = Planet(9, 110, earth_mass, BLUE, screen)
+earth = Planet(9, 110, earth_mass, BLUE, screen, 0.567, 2.4)
 earth.placePlanet()
 
-mars = Planet(5, 126, mars_mass, DUST, screen)
+mars = Planet(5, 126, mars_mass, DUST, screen, 1.754, 2.4)
 mars.placePlanet()
 
-jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen)
+jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 2.89, 3.7)
 jupiter.placePlanet()
 
-saturn = Planet(16, 223, saturn_mass, YELLOW, screen)
+saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 4.72, 4.72)
 saturn.placePlanet()
 
-uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen)
+uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 1.84, 2.4)
 uranus.placePlanet()
 
-neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen)
+neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 1.23, 3.4)
 neptune.placePlanet()
 
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
@@ -168,7 +179,6 @@ while game_loop:
     #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
     for i in planets:
         new_pos = i.movePlanet(math.radians(theta))
-        new_pos = (random.randint(1,100) ,random.randint(1,1000))
         pygame.draw.circle(screen, i.colour, new_pos, i.radius)
         #pygame.display.flip()
         #this stopped the planets like flashing idk if this is right now?
