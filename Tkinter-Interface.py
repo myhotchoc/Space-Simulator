@@ -9,17 +9,6 @@ import tkinter as tk
 planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 data_array =  []
 
-ORANGE = (255, 128, 0) #FOR THE SUN
-GREY = (128, 128, 128) #FOR MERCURY
-BLOODORANGE = (255, 102, 0) #FOR VENUS
-BLUE = (0, 128, 255) #FOR EARTH
-DUST = (245, 202, 139) #FOR MARS
-JUPITER_COL = (252, 91, 11) # COME UP WITH YOUR OWN NAME I HAVE NO CLUE
-YELLOW = (242, 224, 63) #FOR SATURN
-TURQUOISE = (125, 235, 224) #FOR UR ANUS
-DARKBLUE = (19, 27, 246) #FOR NEPTUNE
-BLACK = (0, 0, 0)
-
 root = tk.Tk()
 root.title("Planets")
 title = tk.Label(root, text = 'Choose which planets you want:')
@@ -37,11 +26,14 @@ btn.grid(row = 2, column = 0)
 
 
 base = tk.Tk()
-base.title("Planet Information")
-title = tk.Label(base, text = "Select a planet to view")
-title2 = tk.Label(base, text = "information about it.")
-title.grid(row = 0, column = 0)
-title2.grid(row=0, column = 1)
+base.title("Select a planet to view it's information")
+base["bg"] = "black"
+star4= tk.Label(base, height = 1, width = 1, bg = "black")
+star4.grid(row=0, column = 1)
+# title = tk.Label(base, text = "Select a planet to view it's information", bg = 'white')
+# title2 = tk.Label(base, text = "information about it.", bg = 'white')
+# title.grid(row = 0, column = 0)
+# title2.grid(row=0, column = 1)
 
 #opens the file and adds al the data to an array
 file = open("planet_data.txt", "r")
@@ -56,23 +48,51 @@ def PrintInfo(p,q):
         print(data_array[x])
     print("")
 
-#creates individual buttons for each planet
-merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo(1,4), bg = GREY )
-merc.grid(row = 1, column = 0)
-ven = tk.Button(base, text = "Venus", command = lambda: PrintInfo(4,7), bg = BLOODORANGE)
-ven.grid(row=1, column = 1)
-ear = tk.Button(base, text = "Earth", command = lambda: PrintInfo(7, 10), bg = BLUE)
-ear.grid(row=2, column = 0)
-mar = tk.Button(base, text = "Mars", command = lambda: PrintInfo(10, 13), bg = DUST)
-mar.grid(row=2, column = 1)
-jup = tk.Button(base, text = "Jupiter", command = lambda: PrintInfo(13, 16), bg = JUPITER_COL)
-jup.grid(row=3, column = 0)
-sat = tk.Button(base, text = "Saturn", command = lambda: PrintInfo(16, 19), bg = YELLOW)
-sat.grid(row=3, column = 1)
-ura = tk.Button(base, text = "Uranus", command = lambda: PrintInfo(19, 22), bg = TURQUOISE)
-ura.grid(row=4, column = 0)
-nep = tk.Button(base, text = "Neptune", command = lambda: PrintInfo(22, 25), bg = DARKBLUE)
-nep.grid(row=4, column = 1)
+    
+
+
+merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo(1,4),bg = "grey1", fg = 'grey69' )
+merc.grid(row = 1, column = 1,)
+star3 = tk.Label(base, height = 1, width = 6, bg = 'black')
+star3.grid(row=2, column = 0)
+space = tk.Label(base, height = 1, width = 6, bg = "black")
+space.grid(row=1, column = 2)
+ven = tk.Button(base, text = "Venus", command = lambda: PrintInfo(4,7), fg = 'orange red')
+ven.grid(row=1, column = 3)
+star = tk.Label(base, height = 1, width = 1, bg = 'black')
+star.grid(row=2, column = 0)
+space1 = tk.Label(base, height = 1, width = 6, bg = "black")
+space1.grid(row=3, column = 2)
+ear = tk.Button(base, text = "Earth", command = lambda: PrintInfo(7, 10), fg = 'seagreen3')
+ear.grid(row=3, column = 1)
+star5 = tk.Label(base, height = 1, width = 6, bg = 'black')
+star5.grid(row=3, column = 0)
+mar = tk.Button(base, text = "Mars", command = lambda: PrintInfo(10, 13), fg = 'light salmon')
+mar.grid(row=3, column = 3)
+star1 = tk.Label(base, height = 1, width = 1, bg = 'black')
+star1.grid(row=4, column = 0)
+jup = tk.Button(base, text = "Jupiter", command = lambda: PrintInfo(13, 16), fg = 'red3')
+jup.grid(row=5, column = 1)
+star6 = tk.Label(base, height = 1, width = 6, bg = 'black')
+star6.grid(row=5, column = 0)
+space3 = tk.Label(base, height = 1, width = 6, bg = "black")
+space3.grid(row=5, column = 2)
+sat = tk.Button(base, text = "Saturn", command = lambda: PrintInfo(16, 19), fg = 'pale goldenrod')
+sat.grid(row=5, column = 3)
+star2 = tk.Label(base, height = 1, width = 1, bg = 'black')
+star2.grid(row=6, column = 0)
+ura = tk.Button(base, text = "Uranus", command = lambda: PrintInfo(19, 22), fg = 'turquoise2')
+ura.grid(row=7, column = 1)
+star7 = tk.Label(base, height = 1, width = 6, bg = 'black')
+star7.grid(row=7, column = 0)
+space4 = tk.Label(base, height = 1, width = 6, bg = "black")
+space4.grid(row=7, column = 2)
+nep = tk.Button(base, text = "Neptune", command = lambda: PrintInfo(22, 25), fg = 'blue')
+nep.grid(row=7, column = 3)
+space5 = tk.Label(base, height = 1, width = 6, bg = "black")
+space5.grid(row=8, column = 2)
+endspace = tk.Label(base, height = 1, width = 6, bg = "black")
+endspace.grid(row=1, column = 4)
 
 base.mainloop()
 root.mainloop()
