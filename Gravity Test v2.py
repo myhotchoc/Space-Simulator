@@ -80,9 +80,11 @@ class Body(object):
         else:
             s_y = ((self.v_y ** 2) - (self.u_y ** 2))/ (2 * a[1])
         
+        ## Updating initial velocity for next iteration
         self.u_x = self.v_x
         self.u_y = self.v_y
         
+        ## Returns new position=old position + displacement
         return (s_x + self.pos[0], s_y + self.pos[1])
 
     ## Change position of body
