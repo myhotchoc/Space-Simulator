@@ -78,8 +78,13 @@ class Planet(object):
         ##why is this self. and not just planet???
     
     def movePlanet(self, theta):
-        delta_x = int(((self.orbital_dist ) * math.cos(theta)) + centre[0])
-        delta_y = int(((self.orbital_dist ) * math.sin(theta)) + centre[1])
+        force = (((1000 * 10 * 100) / 30000**2))
+    
+        #calculating the acceleration of the planets using f = ma
+        c1_a = force/1000000
+        c2_a = force/900000000
+        delta_x = int(((self.orbital_dist ) * math.cos(theta)) + centre[0] * c1_a)
+        delta_y = int(((self.orbital_dist ) * math.sin(theta)) + centre[1] * c2_a)
         
         planet_pos = (delta_x, delta_y)
         
