@@ -158,6 +158,7 @@ while game_loop:
 #             
 #             for theta in range(360):
 #                 for i in planets:
+#                     #pygame.draw.circle(screen, i.colour, new_pos, i.radius)
 #                     new_pos = i.movePlanet(math.radians(theta))
 #                     pygame.draw.circle(screen, i.colour, new_pos, i.radius)
 #                     
@@ -173,7 +174,7 @@ while game_loop:
         pygame.display.flip()
         clock.tick(60)
         
-    theta += 5
+    theta += 1
     
     # Update Screen, set framerate
     pygame.display.flip()
