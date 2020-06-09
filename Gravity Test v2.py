@@ -126,6 +126,14 @@ while win_loop:
             win_loop = False
     
     ## Placing two bodies on screen
+    
+    for item in (body1, body2):
+        if item.pos[0] >= win_size[0] or item.pos[0] <= 0:
+            item.u_x = -item.u_x
+        
+        if item.pos[1] >= win_size[1] or item.pos[1] <= 0:
+            item.u_y = -item.u_y
+    
     pygame.draw.circle(screen, body1.colour, body1.pos, 20)
     pygame.draw.circle(screen, body2.colour, body2.pos, 20)
     
