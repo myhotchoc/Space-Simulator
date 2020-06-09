@@ -124,13 +124,18 @@ while win_loop:
     pygame.draw.circle(screen, body1.colour, body1.pos, 20)
     pygame.draw.circle(screen, body2.colour, body2.pos, 20)
     
+    ## Calculates force between bodies due to gravity
     f = body1.force(body2)
+    
+    ## Calculates each body's acceleration
     a1 = body1.acceleration(f)
     a2 = body2.acceleration(f)
     
+    ## Calculates each body's new position
     s1 = body1.displacement(a1)
     s2 = body2.displacement(a2)
     
+    ## Changes position of each body
     body1.changePos(s1)
     body2.changePos(s2)
     
