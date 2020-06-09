@@ -111,7 +111,7 @@ clock = pygame.time.Clock()
 ## Body(mass, u(mag,dir), pos(x,y), col(rgb))
 ## Defining 2 bodies
 body1 = Body(50, (2, math.pi), (int(win_size[1]/4), int(win_size[1]/2)), (255,0,0))
-body2 = Body(50, (-5, math.pi/2), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
+body2 = Body(100, (-2, math.pi/2), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
 
 ## Window runtime loop
 win_loop = True
