@@ -167,7 +167,7 @@ while game_loop:
             
     #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
     for i in planets:
-        new_pos = i.movePlanet(math.radians(theta), random.randint(0,100))
+        new_pos = i.movePlanet(math.radians(theta), random.randint(0,10))
         pygame.draw.circle(screen, i.colour, new_pos, i.radius)
         #pygame.display.flip()
         #this stopped the planets like flashing idk if this is right now?
