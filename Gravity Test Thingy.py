@@ -60,7 +60,7 @@ def changePos():
     print ('f: ', force)
     
     print (c1_s, c2_s)
-    
+     
     if c1_s[1] > 5:
         c1_s = 2
     if c2_s[1] > 5:
