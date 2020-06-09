@@ -59,7 +59,7 @@ DARKBLUE = (19, 27, 246) #FOR NEPTUNE
 BLACK = (0, 0, 0)
 
 class Planet(object):
-    def __init__(self, radius, orbital_dist, mass, colour, window, theta, theta1):
+    def __init__(self, radius, orbital_dist, mass, colour, window, theta, theta1, number):
         self.radius = radius
         self.orbital_dist = orbital_dist
         self.mass = mass
@@ -67,6 +67,7 @@ class Planet(object):
         self.window = window
         self.theta = theta
         self.theta1 = theta1
+        self.number = number
         
         self.speed = (( (6.67408*(10**-1)) * self.mass/self.orbital_dist) ** 0.5)/100000
 
@@ -81,13 +82,9 @@ class Planet(object):
         ##why is this self. and not just planet???
     
     def movePlanet(self, theta):
-        self.theta += 0.05 
-        self.theta1 += 0.05
+        self.theta += self.number 
+        self.theta1 += 0.00005
 
-        if self.theta >= 6:
-            self.theta = 1
-        else:
-            pass
 
         delta_x = int((((self.orbital_dist ) * math.cos(self.theta)) + centre[0]))
         delta_y = int((((self.orbital_dist ) * math.sin(self.theta1)) + centre[1]))
@@ -118,28 +115,28 @@ pygame.init()
 game_loop = True
 clock = pygame.time.Clock()
 
-mercury = Planet(4, 70, mercury_mass, GREY, screen, 0.8, 0.9)
+mercury = Planet(4, 70, mercury_mass, GREY, screen, 0.8, 0, 0.8)
 mercury.placePlanet()
 
-venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 1.7, 1.7)
+venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 1.7, 1, 1.7)
 venus.placePlanet()
 
-earth = Planet(9, 110, earth_mass, BLUE, screen, 2.6, 2.6)
+earth = Planet(9, 110, earth_mass, BLUE, screen, 2.6, 2, 2.6)
 earth.placePlanet()
 
-mars = Planet(5, 126, mars_mass, DUST, screen, 3.1, 3.1)
+mars = Planet(5, 126, mars_mass, DUST, screen, 3.1, 3, 3.1)
 mars.placePlanet()
 
-jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 3.875, 3.8)
+jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 3.875, 3, 3.875)
 jupiter.placePlanet()
 
-saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 4.65, 4.7)
+saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 4.65, 4, 4.65)
 saturn.placePlanet()
 
-uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 5.4, 5.4)
+uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 5.4, 5, 5.4)
 uranus.placePlanet()
 
-neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 6.2, 6.2)
+neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 6.2, 6, 6.282)
 neptune.placePlanet()
 
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
