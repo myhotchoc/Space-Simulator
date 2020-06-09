@@ -137,6 +137,7 @@ while win_loop:
     a2 = body2.acceleration(f)
     
     ## Calculates each body's new position
+    #s1 = body1.displacement(a1)
     s1 = body1.displacement(a1)
     s2 = body2.displacement(a2)
     
