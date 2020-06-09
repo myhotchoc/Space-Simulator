@@ -9,12 +9,12 @@ import pygame
 import random
 import math
 
-## Gravitational constant but I changed the value because this is not my universe and I am not god
-G = 10 
+## Gravitational constant but I changed the value because this is my universe and I am god
+G = 100
 
 ## Resolves vector into x and y components, returns (x, y) for <magnitude, angle>
 def resolve(mag, t):
-    return (mag * math.cos(t), mag * math.sin(t))
+    return (mag * math.sin(t), mag * math.cos(t))
 
 ## Class for body
 class Body(object):
@@ -48,7 +48,11 @@ class Body(object):
         x = self.pos[0] - b2.pos[0]
         
         ## Finds angle to horizontal between bodies
-        theta = math.atan(y/x)
+        
+        if x == 0:
+            theta = math.pi/2
+        else:
+            theta = math.atan(y/x)
         
         ## Returns x and y components of force
         return resolve(f, theta)
@@ -81,7 +85,7 @@ class Body(object):
             s_y = ((self.v_y ** 2) - (self.u_y ** 2))/ (2 * a[1])
         
         ## Updating initial velocity for next iteration
-        self.u_x= self.v_x
+        self.u_x = self.v_x
         self.u_y = self.v_y
         
         ## Returns new position=old position + displacement
@@ -106,8 +110,8 @@ clock = pygame.time.Clock()
 
 ## Body(mass, u(mag,dir), pos(x,y), col(rgb))
 ## Defining 2 bodies
-body1 = Body(100, (10, math.pi/2), (int(win_size[1]/4), int(win_size[1]/2)), (255,0,0))
-body2 = Body(100, (0, 0), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
+body1 = Body(50, (2, math.pi), (int(win_size[1]/4), int(win_size[1]/2)), (255,0,0))
+body2 = Body(50, (-5, math.pi/2), (int(3*win_size[1]/4), int(win_size[1]/2)), (0,0,255))
 
 ## Window runtime loop
 win_loop = True
