@@ -75,9 +75,9 @@ class Planet(object):
         planet_pos = (centre[0], centre[1] - self.orbital_dist)
         
         self.planet = pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
+        ##why is this self. and not just planet???
     
     def movePlanet(self, theta):
-        
         delta_x = int(((self.orbital_dist ) * math.cos(theta)) + centre[0])
         delta_y = int(((self.orbital_dist ) * math.sin(theta)) + centre[1])
         
@@ -136,15 +136,13 @@ theta = 0
 
 while game_loop:
     
-    # Black background, white circle in centre
+    # Black background
     screen.fill(BLACK)
     
-    ## (win, col, pos, r)
+    ## (window, colour, position, radius)
     sun = pygame.draw.circle(screen, ORANGE, centre, 50)
     
     ##planet=(r, orbit_r, col, speed, window)
-    
-    
     
     # Gets list of all events
     for item in pygame.event.get():
@@ -177,7 +175,9 @@ while game_loop:
     theta += 1
     
     # Update Screen, set framerate
-    pygame.display.flip()
+    pygame.display.flip() 
+    ##what does this do??? it works with and without it
+
     clock.tick(60)
 
 # Exit
