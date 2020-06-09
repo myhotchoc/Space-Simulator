@@ -77,14 +77,9 @@ class Planet(object):
         self.planet = pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
         ##why is this self. and not just planet???
     
-    def movePlanet(self, theta):
-        force = (((1000 * 10 * 100) / 30000**2))
-    
-        #calculating the acceleration of the planets using f = ma
-        c1_a = force/1000000
-        c2_a = force/900000000
-        delta_x = int(((self.orbital_dist ) * math.cos(theta)) + centre[0] * c1_a)
-        delta_y = int(((self.orbital_dist ) * math.sin(theta)) + centre[1] * c2_a)
+    def movePlanet(self, theta, changing):
+        delta_x = int((((self.orbital_dist ) * math.cos(theta)) + centre[0]) * changing)
+        delta_y = int((((self.orbital_dist ) * math.sin(theta)) + centre[1]) * changing)
         
         planet_pos = (delta_x, delta_y)
         
@@ -172,7 +167,7 @@ while game_loop:
             
     #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
     for i in planets:
-        new_pos = i.movePlanet(math.radians(theta))
+        new_pos = i.movePlanet(math.radians(theta), random.randint(0,10))
         pygame.draw.circle(screen, i.colour, new_pos, i.radius)
         #pygame.display.flip()
         #this stopped the planets like flashing idk if this is right now?
