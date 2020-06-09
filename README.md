@@ -13,7 +13,7 @@ We need:
 
 **TO DO:**
 * Figure out trajectory
-* Figure out planet speed (some physics equation?? Time to get the A Level phys textbook out
+* Figure out planet speed (some physics equation?? Time to get the A Level phys textbook out)
 * Have planets move around their own trajectory at right speed
 * Tkinter panel that shows information on each planet speed size etc
-*Done - Tkinter options panel to add more planets
+Done - Tkinter options panel to add more planets
