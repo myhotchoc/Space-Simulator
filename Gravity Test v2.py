@@ -68,16 +68,15 @@ class Body(object):
         
         ## v^2 - u^2 = 2as
         
+        ## If statements to prevent division by 0 and Python throwing a hissy fit at me
         if a[0] == 0:
             s_x = 0
-        
         else:
             s_x = ((self.v_x ** 2) - (self.u_x ** 2))/ (2 * a[0])
         
         
         if a[1] == 0:
             s_y = 0
-            
         else:
             s_y = ((self.v_y ** 2) - (self.u_y ** 2))/ (2 * a[1])
         
