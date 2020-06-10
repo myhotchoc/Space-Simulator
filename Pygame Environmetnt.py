@@ -57,6 +57,7 @@ YELLOW = (242, 224, 63) #FOR SATURN
 TURQUOISE = (125, 235, 224) #FOR UR ANUS
 DARKBLUE = (19, 27, 246) #FOR NEPTUNE
 BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 
 class Planet(object):
     def __init__(self, radius, orbital_dist, mass, colour, window, theta, theta1, number):
@@ -103,7 +104,7 @@ win_size = (1000, 1000)
 screen = pygame.display.set_mode(win_size)
 
 # Defining centre of screen
-centre = (int(win_size[0]/2), int(win_size[1]/2))
+centre = (int(win_size[0]/2), int((win_size[1]/2)-70))
 
 #Initialise window
 pygame.init()
@@ -114,32 +115,41 @@ pygame.init()
 ## Main window loop
 game_loop = True
 clock = pygame.time.Clock()
-
-mercury = Planet(4, 70, mercury_mass, GREY, screen, 1, 1, 1)
+##scale factor == 0.05696203
+mercury = Planet(4, 70, mercury_mass, GREY, screen, 1, 1, 2.7)
 mercury.placePlanet()
 
-venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 1, 1, 1.7)
+venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 1, 1, 1.9936)
 venus.placePlanet()
 
-earth = Planet(9, 110, earth_mass, BLUE, screen, 1, 1, 2.6)
+earth = Planet(9, 110, earth_mass, BLUE, screen, 1, 1, 1.6974)
 earth.placePlanet()
 
-mars = Planet(5, 126, mars_mass, DUST, screen, 1, 1, 3.1)
+mars = Planet(5, 126, mars_mass, DUST, screen, 1, 1, 1.3727)
 mars.placePlanet()
 
-jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 1, 1, 3.875)
+jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 1, 1, 0.7462)
 jupiter.placePlanet()
 
-saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 1, 1, 4.65)
+saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 1, 1, 0.5525)
 saturn.placePlanet()
 
-uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 1, 1, 5.4)
+uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 1, 1, 0.3873)
 uranus.placePlanet()
 
-neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 1, 1, 6)
+neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 1, 1, 0.3076)
 neptune.placePlanet()
 
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+
+# ''' Mercury 47.4 km/s
+# Venus 35.0 km/s
+# Earth 29.8 km/s
+# Mars 24.1 km/s
+# Jupiter 13.1 km/s
+# Saturn 9.7 km/s
+# Uranus 6.8 km/s
+# Neptune 5.4 km/s '''
 
 theta = 0
 
@@ -185,10 +195,7 @@ while game_loop:
     theta += 1
     
     # Update Screen, set framerate
-    pygame.display.flip() 
-    ##what does this do??? it works with and without it
-    ## idk go ask the nerds that made pygame
-
+    pygame.display.flip()
     clock.tick(7)
 
 # Exit
