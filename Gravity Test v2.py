@@ -22,7 +22,7 @@ def resolve(mag, t):
         return (mag * math.cos(pi-t), mag * math.sin(pi-t))
     
     elif t > pi and t < 3 * pi/2:
-        return (mag * math.cos(pi+t), mag * -math.sin(pi+t))
+        return (mag * math.cos(pi+t), mag * math.sin(pi+t))
     
     elif t > 3*pi/2 and t < 2 * pi:
         return (mag * math.cos(t), -mag * math.sin(t))
