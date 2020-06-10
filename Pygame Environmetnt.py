@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jun  7 15:32:45 2020
-@author: Danny and Jenni (but she smells)
+@author: Danny and Jenni (but he smells)
 """
 
 import pygame
@@ -83,7 +83,7 @@ class Planet(object):
     
     def movePlanet(self, theta):
         self.theta += self.number 
-        self.theta1 += 0.00005
+        self.theta1 += self.number
 
 
         delta_x = int((((self.orbital_dist ) * math.cos(self.theta)) + centre[0]))
@@ -115,28 +115,28 @@ pygame.init()
 game_loop = True
 clock = pygame.time.Clock()
 
-mercury = Planet(4, 70, mercury_mass, GREY, screen, 0.8, 0, 0.8)
+mercury = Planet(4, 70, mercury_mass, GREY, screen, 1, 1, 1)
 mercury.placePlanet()
 
-venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 1.7, 1, 1.7)
+venus = Planet(8, 90, venus_mass, BLOODORANGE, screen, 1, 1, 1.7)
 venus.placePlanet()
 
-earth = Planet(9, 110, earth_mass, BLUE, screen, 2.6, 2, 2.6)
+earth = Planet(9, 110, earth_mass, BLUE, screen, 1, 1, 2.6)
 earth.placePlanet()
 
-mars = Planet(5, 126, mars_mass, DUST, screen, 3.1, 3, 3.1)
+mars = Planet(5, 126, mars_mass, DUST, screen, 1, 1, 3.1)
 mars.placePlanet()
 
-jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 3.875, 3, 3.875)
+jupiter = Planet(20, 166, jupiter_mass, JUPITER_COL, screen, 1, 1, 3.875)
 jupiter.placePlanet()
 
-saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 4.65, 4, 4.65)
+saturn = Planet(16, 223, saturn_mass, YELLOW, screen, 1, 1, 4.65)
 saturn.placePlanet()
 
-uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 5.4, 5, 5.4)
+uranus = Planet(13, 306, uranus_mass, TURQUOISE, screen, 1, 1, 5.4)
 uranus.placePlanet()
 
-neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 6.2, 6, 6.282)
+neptune = Planet(12, 423, neptune_mass, DARKBLUE, screen, 1, 1, 6)
 neptune.placePlanet()
 
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
@@ -189,7 +189,7 @@ while game_loop:
     ##what does this do??? it works with and without it
     ## idk go ask the nerds that made pygame
 
-    clock.tick(20)
+    clock.tick(7)
 
 # Exit
 pygame.quit()
