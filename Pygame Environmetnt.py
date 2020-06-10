@@ -79,7 +79,7 @@ class Planet(object):
         planet_pos = (centre[0], centre[1] - self.orbital_dist)
         
         self.planet = pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
-        ##why is this self. and not just planet???
+        ##why is this self. and not just planet???  ## So I can access it outside the class definition or something innit
     
     def movePlanet(self, theta):
         self.theta += self.number 
@@ -187,6 +187,7 @@ while game_loop:
     # Update Screen, set framerate
     pygame.display.flip() 
     ##what does this do??? it works with and without it
+    ## idk go ask the nerds that made pygame
 
     clock.tick(20)
 
