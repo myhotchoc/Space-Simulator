@@ -105,6 +105,7 @@ screen = pygame.display.set_mode(win_size)
 
 # Defining centre of screen
 centre = (int(win_size[0]/2), int((win_size[1]/2)-70))
+print(centre)
 
 #Initialise window
 pygame.init()
@@ -115,7 +116,7 @@ pygame.init()
 ## Main window loop
 game_loop = True
 clock = pygame.time.Clock()
-##scale factor == 0.05696203
+
 mercury = Planet(4, 70, mercury_mass, GREY, screen, 1, 1, 2.7)
 mercury.placePlanet()
 
@@ -184,7 +185,8 @@ while game_loop:
 #                 clock.tick(60)
 # =============================================================================
             
-    #ellipse1 = pygame.draw.ellipse(screen, WHITE, [100,100,800,300], 3)
+    #
+    #ellipse1 = pygame.draw.ellipse(screen, WHITE, [430,370,130,130], 3)
     for i in planets:
         new_pos = i.movePlanet(math.radians(theta))
         pygame.draw.circle(screen, i.colour, new_pos, i.radius)
