@@ -20,7 +20,7 @@ DARKBLUE = (19, 27, 246)
 BLACK = (0, 0, 0)
 
 ## Newton's Gravitational Constant but I changed the value 
-G = 50
+G = 30
 
 mercury_col = GREY
 venus_col = BLOODORANGE
@@ -139,7 +139,7 @@ class Body(object):
         
         ## Adds current position to list of all positions
         ## Comment me out to stop the planet trails
-        self.past.append([self.px, self.py])
+        #self.past.append([self.px, self.py])
             
     
 ## Setting window size, defining screen
