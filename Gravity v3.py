@@ -73,7 +73,7 @@ saturn_speed = 3
 uranus_speed = 2.8
 neptune_speed = 2.5
 
-timestep = 2
+timestep = 0.5
 
 ## Class for a body in space
 class Body(object):
