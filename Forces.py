@@ -5,6 +5,9 @@ Created on Fri Jun 12 07:51:52 2020
 @author: Danny
 """
 
+## Hold mouse button to stop gravity
+## Press left or right arrow keys to add wind to left or right
+
 
 def magDir(x, y):
     return math.sqrt(x**2 + y**2), atan2(y, x)
@@ -16,9 +19,15 @@ def mag(x, y):
     return math.sqrt(x**2 + y**2)
 
 def setMag(x, y, m):
+    
     magnitude = mag(x, y)
-    x = x/magnitude * m
-    y = y/magnitude * m
+    
+    if magnitude == 0:
+        return 0, 0
+    else:
+    
+        x = x/magnitude * m
+        y = y/magnitude * m
     
     return x, y
 
@@ -31,11 +40,18 @@ def limit(x, y, a):
 px = centre[0]
 py = centre[1]
 
-vx = 4
-vy = 4
+vx = 0
+vy = 0
+
+ax = 0
+ay = 0
 
 acc_val = 0.5
-vel_limit = 15
+vel_limit = 20
+
+gravity = True
+windRight = False
+windLeft = False
 
 def changePos(px, py, vx, vy):
     
@@ -49,7 +65,13 @@ def changeVel(vx, vy, ax, ay):
     vy += ay
     
     return vx, vy
+
+def changeAcc(ax, ay, fx, fy):
+    ax += fx
+    ay += fy
     
+    return ax, ay
+
 ## Setting window size, defining screen
 win_size = (900, 900)
 screen = pygame.display.set_mode(win_size)
@@ -70,16 +92,43 @@ while win_loop:
     ## Refills background
     screen.fill((0, 0, 0))
     
+    fx, fy = 0, 0
+    
     ## Checks for QUIT event to break loop
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
             win_loop = False
+            
+        if i.type == pygame.MOUSEBUTTONDOWN:
+            gravity = False
         
+        if i.type == pygame.MOUSEBUTTONUP:
+            gravity = True
+        
+        if i.type == pygame.KEYDOWN:
+            if i.key == pygame.K_RIGHT:
+                windRight = True
+            if i.key == pygame.K_LEFT:
+                windLeft = True
+        
+        if i.type == pygame.KEYUP:
+            if i.key == pygame.K_RIGHT:
+                windRight = False
+            if i.key == pygame.K_LEFT:
+                windLeft = False
     
     mouse = pygame.mouse.get_pos()
     
-    accx = mouse[0] - px
-    accy = mouse[1] - py
+    if gravity == True:
+        fy += 0.5
+    
+    if windRight == True:
+        fx += 0.1
+    
+    if windLeft == True:
+        fx -= 0.1
+    
+    accx, accy = changeAcc(ax, ay, fx, fy)
     
     accx, accy = setMag(accx, accy, acc_val)
     

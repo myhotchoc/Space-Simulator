@@ -34,7 +34,7 @@ neptune_col = DARKBLUE
 ## All data in metres
 mercury_to_sun = 50
 venus_to_sun = 75
-earth_to_sun = 100
+earth_to_sun = 105
 mars_to_sun = 125
 jupiter_to_sun = 190
 saturn_to_sun = 240
@@ -102,7 +102,7 @@ class Body(object):
     ## Defines force between two bodies
     def force(self, body2):
         
-        ## Newton's Law of Gravitation
+        ## Newton's Law of Gravitation - F=G*m1*m2/r^2
         f = (G * self.mass * body2.mass) / (self.distance(body2) ** 2)
         
         ## Difference in x-pos and y-pos
@@ -121,7 +121,7 @@ class Body(object):
         
         ## F=ma --> a = F/m
         ## Adding acceleration to current velocity
-        ## v = u + at
+        ## v = u + a*t
         self.vx += self.fx/self.mass * timestep
         self.vy += self.fy/self.mass * timestep
         
@@ -173,6 +173,8 @@ neptune = Body(neptune_mass, centre[0], centre[1]+neptune_to_sun, neptune_speed,
 ## List of all planets
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
 
+gravity = True
+
 ## Main runtime loop
 while win_loop:
     
@@ -183,6 +185,12 @@ while win_loop:
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
             win_loop = False
+            
+        if i.type == pygame.MOUSEBUTTONDOWN:
+            gravity = False
+        
+        if i.type == pygame.MOUSEBUTTONUP:
+            gravity = True
     
     ## Draw sun
     pygame.draw.circle(screen, sun.colour, (int(sun.px), int(sun.py)), sun_radius)
@@ -196,7 +204,10 @@ while win_loop:
         ## Draw planet at current position
         pygame.draw.circle(screen, i.colour, (int(i.px), int(i.py)), i.radius)
         ## Calculate force on planet due to the sun
-        i.force(sun)
+        
+        if gravity == True:
+            i.force(sun)
+            
         ## Update velocity and position data
         i.changePos()
 
