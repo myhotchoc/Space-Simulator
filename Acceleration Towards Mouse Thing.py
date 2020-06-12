@@ -12,11 +12,20 @@ def magDir(x, y):
 def resolve(mag, t):
     return mag*math.cos(t), mag*math.sin(t)
 
+def mag(x, y):
+    return math.sqrt(x**2 + y**2)
+
 def setMag(x, y, m):
-    mag = math.sqrt(x**2 + y**2)
-    x = x/mag * m
-    y = y/mag * m
+    magnitude = mag(x, y)
+    x = x/magnitude * m
+    y = y/magnitude * m
     
+    return x, y
+
+def limit(x, y, a):
+    if mag(x, y) >= a:
+        x, y = setMag(x, y, a)
+        
     return x, y
 
 px = centre[0]
@@ -24,6 +33,9 @@ py = centre[1]
 
 vx = 4
 vy = 4
+
+acc_val = 0.5
+vel_limit = 20
 
 def changePos(px, py, vx, vy):
     
@@ -69,9 +81,14 @@ while win_loop:
     accx = mouse[0] - px
     accy = mouse[1] - py
     
-    accx, accy = setMag(accx, accy, 0.5)
+    accx, accy = setMag(accx, accy, acc_val)
     
     vx, vy = changeVel(vx, vy, accx, accy)
+    
+    print (limit(vx, vy, vel_limit))
+    
+    vx, vy = limit(vx, vy, vel_limit)
+    
     
     if px+vx >= win_size[0] or px+vx < 0:
         vx = -vx
