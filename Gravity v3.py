@@ -37,9 +37,9 @@ venus_to_sun = 75
 earth_to_sun = 105
 mars_to_sun = 125
 jupiter_to_sun = 190
-saturn_to_sun = 240
-uranus_to_sun = 300
-neptune_to_sun = 380
+saturn_to_sun = 260
+uranus_to_sun = 330
+neptune_to_sun = 400
 
 ## All data in kg
 sun_mass = 50
@@ -47,8 +47,8 @@ mercury_mass = 3
 venus_mass = 5
 earth_mass = 5
 mars_mass = 6
-jupiter_mass = 35
-saturn_mass = 32
+jupiter_mass = 37
+saturn_mass = 28
 uranus_mass = 20
 neptune_mass = 25
 
@@ -73,7 +73,7 @@ saturn_speed = 3
 uranus_speed = 2.8
 neptune_speed = 2.5
 
-timestep = 1
+timestep = 2
 
 ## Class for a body in space
 class Body(object):
@@ -85,7 +85,7 @@ class Body(object):
         self.vx = vx
         self.vy = vy
         self.colour = colour
-        self.radius = radius
+        self.radius = int(math.sqrt(mass)) * 3
         
         ## Holds all past locations
         self.past = []
