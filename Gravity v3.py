@@ -142,6 +142,7 @@ class Body(object):
         self.past.append([self.px, self.py])
             
     
+    
 ## Setting window size, defining screen
 win_size = (900, 900)
 screen = pygame.display.set_mode(win_size)
