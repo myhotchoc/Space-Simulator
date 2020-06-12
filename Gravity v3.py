@@ -19,7 +19,7 @@ TURQUOISE = (125, 235, 224)
 DARKBLUE = (19, 27, 246)
 BLACK = (0, 0, 0)
 
-## Newton's Gravitational Constant but I changed the value because I AM GOD
+## Newton's Gravitational Constant but I changed the value 
 G = 50
 
 mercury_col = GREY
