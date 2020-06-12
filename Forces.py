@@ -5,6 +5,9 @@ Created on Fri Jun 12 07:51:52 2020
 @author: Danny
 """
 
+import pygame
+import math
+
 ## Hold mouse button to stop gravity
 ## Press left or right arrow keys to add wind to left or right
 
