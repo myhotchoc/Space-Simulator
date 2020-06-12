@@ -35,7 +35,7 @@ vx = 4
 vy = 4
 
 acc_val = 0.5
-vel_limit = 20
+vel_limit = 15
 
 def changePos(px, py, vx, vy):
     
