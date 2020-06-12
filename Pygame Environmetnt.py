@@ -98,7 +98,7 @@ class Planet(object):
         #pygame.draw.circle(self.window, self.colour, planet_pos, self.radius)
 
 # Window size
-win_size = (1000, 1000)
+win_size = (1000, 800)
 
 #Screen object
 screen = pygame.display.set_mode(win_size)
@@ -192,13 +192,13 @@ while game_loop:
         pygame.draw.circle(screen, i.colour, new_pos, i.radius)
         #pygame.display.flip()
         #this stopped the planets like flashing idk if this is right now?
-        clock.tick(60)
+        #clock.tick(60)
         
     theta += 1
     
     # Update Screen, set framerate
     pygame.display.flip()
-    clock.tick(7)
+    clock.tick(30)
 
 # Exit
 pygame.quit()
