@@ -138,6 +138,7 @@ class Body(object):
         self.px += self.vx * timestep
         
         ## Adds current position to list of all positions
+        ## Comment me out to stop the planet trails
         self.past.append([self.px, self.py])
             
     
@@ -161,7 +162,7 @@ win_loop = True
 sun = Body(sun_mass, centre[0], centre[1], 0, 0, ORANGE, sun_radius)
 
 mercury = Body(mercury_mass, centre[0], centre[1]+mercury_to_sun, mercury_speed, 0, mercury_col, mercury_radius)
-venus = Body(venus_mass, centre[0], centre[1]+venus_to_sun, venus_speed, 0, venus_col, venus_radius)
+venus = Body(venus_mass, centre[0], centre[1]+venus_to_sun, -venus_speed, 0, venus_col, venus_radius)
 earth = Body(earth_mass, centre[0], centre[1]+earth_to_sun, earth_speed, 0, earth_col, earth_radius)
 mars = Body(mars_mass, centre[0], centre[1]+mars_to_sun, mars_speed, 0, mars_col, mars_radius)
 jupiter = Body(jupiter_mass, centre[0], centre[1]+jupiter_to_sun, jupiter_speed, 0, jupiter_col, jupiter_radius)
