@@ -5,6 +5,25 @@ Created on Fri Jun 12 07:51:52 2020
 @author: Danny
 """
 
+import pygame
+import math
+
+
+## Setting window size, defining screen
+win_size = (900, 900)
+screen = pygame.display.set_mode(win_size)
+
+## Defining centre of screen
+centre = (int(win_size[0]/2), int(win_size[1]/2))
+
+## Initialise window
+pygame.init()
+
+## Defining clock object
+clock = pygame.time.Clock()
+
+## Window runtime loop
+win_loop = True
 
 def magDir(x, y):
     return math.sqrt(x**2 + y**2), atan2(y, x)
@@ -50,21 +69,7 @@ def changeVel(vx, vy, ax, ay):
     
     return vx, vy
     
-## Setting window size, defining screen
-win_size = (900, 900)
-screen = pygame.display.set_mode(win_size)
 
-## Defining centre of screen
-centre = (int(win_size[0]/2), int(win_size[1]/2))
-
-## Initialise window
-pygame.init()
-
-## Defining clock object
-clock = pygame.time.Clock()
-
-## Window runtime loop
-win_loop = True
 
 while win_loop:
     ## Refills background
