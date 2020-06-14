@@ -103,8 +103,8 @@ while win_loop:
     
     px, py = changePos(px, py, vx, vy)
     
-    if px >= win_size[0] or px < 0 or py >= win_size[1] or py <= 0:
-        px, py = px, py
+    #if px >= win_size[0] or px < 0 or py >= win_size[1] or py <= 0:
+  #      px, py = px, py
         
     pygame.draw.circle(screen, (255, 100, 0), (int(px), int(py)), 20)
 
