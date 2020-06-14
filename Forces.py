@@ -123,7 +123,7 @@ class Body(object):
         self.fx += force[0]
         self.fy += force[1]
         
-        drawArrow(screen, (100, 50, 231), (self.px, self.py),(self.px+self.fx, self.py+self.fy))
+        drawArrow(screen, (100, 255, 0), (self.px, self.py),(self.px * 1.15 +self.fx, self.py * 1.15+self.fy))
         
     def friction(self):
         
@@ -212,7 +212,7 @@ while win_loop:
         if windLeft == True:
             i.applyForce(windLeftVector)
         
-        i.friction()
+        #i.friction()
         
         i.changeAcc()
         #i.ax, i.ay = setMag(i.ax, i.ay, 0.5)
