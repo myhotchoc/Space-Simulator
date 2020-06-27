@@ -214,11 +214,6 @@ def solarSystem():
     gravity = True
 
     ## Main runtime loop
-    base = tk.Tk()
-    base.title("Select a planet to view it's information")
-    base["bg"] = "black"
-    star4= tk.Label(base, height = 1, width = 1, bg = "black")
-    star4.grid(row=0, column = 1)
     while win_loop:
         ## Refills background with black
         screen.fill((0, 0, 0))
@@ -256,15 +251,6 @@ def solarSystem():
         ## Update screen
         pygame.display.flip()
         clock.tick(60)
-        base.mainloop()
-
-    ## Close window
-    pygame.quit()
-
-
-btn = tk.Button(root, text ='Done', command = lambda: solarSystem())
-btn.grid(row = 2, column = 0)
-solarSystem()       
 
 #prints the data for the selected planet
 def PrintInfo(p,q, planet):
@@ -277,6 +263,7 @@ def PrintInfo(p,q, planet):
     data = tk.Text(baseFrame)
     data.insert(tk.END, quote)
     data.pack()
+
 
 #creates the layout on the interface
 def createInfoInterface(base):
@@ -323,5 +310,19 @@ def createInfoInterface(base):
     endspace = tk.Label(base, height = 1, width = 6, bg = "black")
     endspace.grid(row=1, column = 4)
 
+
+btn = tk.Button(root, text ='Done', command = lambda: solarSystem())
+btn.grid(row = 2, column = 0)
+       
+base = tk.Tk()
+base.title("Select a planet to view it's information")
+base["bg"] = "black"
+star4= tk.Label(base, height = 1, width = 1, bg = "black")
+star4.grid(row=0, column = 1)
+createInfoInterface(base)
+base.mainloop()
+
 root.mainloop()
 
+## Close window
+pygame.quit()
