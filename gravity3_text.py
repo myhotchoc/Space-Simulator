@@ -7,6 +7,7 @@ Created on Fri Jun 12 01:49:55 2020
 import math
 import pygame
 import tkinter as tk
+from tkinter import messagebox
 
 ## RGB values for colours
 ORANGE = (255, 128, 0)
@@ -181,6 +182,7 @@ def solarSystem():
     win_loop = True
     ## Defining Solar System bodies
     sun = Body(sun_mass, centre[0], centre[1], 0, 0, ORANGE, sun_radius)
+    marsBut = pygame.Rect(100,100,50,50)
 
     planets = []
     planets_chosen = list(planetsChosen)
@@ -220,14 +222,19 @@ def solarSystem():
         
         ## Checks for QUIT event to break loop
         for i in pygame.event.get():
+            mouse_pos = pygame.mouse.get_pos()
             if i.type == pygame.QUIT:
                 win_loop = False
                 
             if i.type == pygame.MOUSEBUTTONDOWN:
-                gravity = False
+                if marsBut.collidepoint(mouse_pos):
+                    messagebox.showinfo('HEY')
+                else:
+                    gravity = False
             
             if i.type == pygame.MOUSEBUTTONUP:
                 gravity = True
+            
         
         ## Draw sun
         pygame.draw.circle(screen, sun.colour, (int(sun.px), int(sun.py)), sun_radius)
