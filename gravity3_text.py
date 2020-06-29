@@ -182,7 +182,16 @@ def solarSystem():
     win_loop = True
     ## Defining Solar System bodies
     sun = Body(sun_mass, centre[0], centre[1], 0, 0, ORANGE, sun_radius)
-    marsBut = pygame.Rect(100,100,50,50)
+
+    merBut = pygame.Rect(10,10,50,30)
+    venBut = pygame.Rect(100,10,50,30)
+    earBut = pygame.Rect(190,10,50,30)
+    marsBut = pygame.Rect(280,10,50,30)
+    jupBut = pygame.Rect(370,10,50,30)
+    satBut = pygame.Rect(460,10,50,30)
+    uraBut = pygame.Rect(550,10,50,30)
+    nepBut = pygame.Rect(640,10,50,30)
+
 
     planets = []
     planets_chosen = list(planetsChosen)
@@ -228,13 +237,36 @@ def solarSystem():
                 
             if i.type == pygame.MOUSEBUTTONDOWN:
                 if marsBut.collidepoint(mouse_pos):
-                    messagebox.showinfo('HEY')
+                    PrintInfo(10, 13, "Mars")
+                if merBut.collidepoint(mouse_pos):
+                    PrintInfo(1, 4, "Mercury")
+                if venBut.collidepoint(mouse_pos):
+                    PrintInfo(4, 7, "Venus")
+                if earBut.collidepoint(mouse_pos):
+                    PrintInfo(7, 10, "Earth")
+                if jupBut.collidepoint(mouse_pos):
+                    PrintInfo(13, 16, "Jupiter")
+                if satBut.collidepoint(mouse_pos):
+                    PrintInfo(16, 19, "Saturn")
+                if uraBut.collidepoint(mouse_pos):
+                    PrintInfo(19, 22, "Uranus")
+                if nepBut.collidepoint(mouse_pos):
+                    PrintInfo(22, 24, "Neptune")
                 else:
                     gravity = False
             
             if i.type == pygame.MOUSEBUTTONUP:
                 gravity = True
             
+        pygame.draw.rect(screen, GREY, merBut)
+        pygame.draw.rect(screen, GREY, venBut)
+        pygame.draw.rect(screen, GREY, earBut)
+        pygame.draw.rect(screen, GREY, marsBut)
+        pygame.draw.rect(screen, GREY, jupBut)
+        pygame.draw.rect(screen, GREY, satBut)
+        pygame.draw.rect(screen, GREY, uraBut)
+        pygame.draw.rect(screen, GREY, nepBut)
+
         
         ## Draw sun
         pygame.draw.circle(screen, sun.colour, (int(sun.px), int(sun.py)), sun_radius)
@@ -261,7 +293,7 @@ def solarSystem():
 
 #prints the data for the selected planet
 def PrintInfo(p,q, planet):
-    baseFrame = tk.Toplevel(base)
+    baseFrame = tk.Tk()
     baseFrame.title(planet)
     quote1 = "The distance from " + planet + " to the Sun is: " + data_array[p][2] + " in metres." 
     quote2 = "The mass of " + planet + " is: " + data_array[p+1][2] + " in kg."
@@ -273,7 +305,7 @@ def PrintInfo(p,q, planet):
 
 
 #creates the layout on the interface
-def createInfoInterface(base):
+def createInfoInterface():
     merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo(1, 4, "Mercury"),bg = "grey1", fg = 'grey69' )
     merc.grid(row = 1, column = 1,)
     star3 = tk.Label(base, height = 1, width = 6, bg = 'black')
@@ -326,7 +358,7 @@ base.title("Select a planet to view it's information")
 base["bg"] = "black"
 star4= tk.Label(base, height = 1, width = 1, bg = "black")
 star4.grid(row=0, column = 1)
-createInfoInterface(base)
+createInfoInterface()
 base.mainloop()
 
 root.mainloop()
