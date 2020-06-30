@@ -317,7 +317,7 @@ def PrintInfo(p,q, planet):
     quote2 = "The mass of " + planet + " is: " + data_array[p+1][2] + " in kg."
     quote3 = "The radius of " + planet + " is:" + data_array[q][2] + " in metres."
     quote = quote1 + "\n" + quote2 + "\n" + quote3
-    messagebox.showinfo("PO", quote)
+    messagebox.showinfo("Information", quote)
     # data = tk.Text(baseFrame)
     # data.insert(tk.END, quote)
     #data.pack()
