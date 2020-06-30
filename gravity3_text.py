@@ -77,7 +77,7 @@ neptune_speed = 2.5
 
 timestep = 1
 win_size = (900, 900)
-planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+planets_array = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Select All"]
 data_array =  []
 
 #opens the file and adds all the data to an array 
@@ -159,13 +159,12 @@ root.title("Planets")
 title = tk.Label(root, text = 'Choose which planets you want:')
 title.grid(row= 0, column = 0)
 #creates a list of the avaliable planets to be shown on the pygame interface
-planets_selection = tk.Listbox(root, selectmode = 'multiple', height = 8 )
+planets_selection = tk.Listbox(root, selectmode = 'multiple', height = 9 )
 for item in planets_array:
     planets_selection.insert(tk.END, item)
 planets_selection.grid(row = 1, column = 0)
 
 #produces a list of the indices of the planets selected - starting from zero
-
 
 
 def solarSystem(): 
@@ -195,30 +194,48 @@ def solarSystem():
 
     planets = []
     planets_chosen = list(planetsChosen)
-    if 0 in planets_chosen:
-        mercury = Body(mercury_mass, centre[0], centre[1]+mercury_to_sun, mercury_speed, 0, mercury_col, mercury_radius)
-        planets.append(mercury)
-    if 1 in planets_chosen:
-        venus = Body(venus_mass, centre[0], centre[1]+venus_to_sun, -venus_speed, 0, venus_col, venus_radius)
-        planets.append(venus)
-    if 2 in planets_chosen:
-        earth = Body(earth_mass, centre[0], centre[1]+earth_to_sun, earth_speed, 0, earth_col, earth_radius)
-        planets.append(earth)
-    if 3 in planets_chosen:
-        mars = Body(mars_mass, centre[0], centre[1]+mars_to_sun, mars_speed, 0, mars_col, mars_radius)
-        planets.append(mars)
-    if 4 in planets_chosen:
-        jupiter = Body(jupiter_mass, centre[0], centre[1]+jupiter_to_sun, jupiter_speed, 0, jupiter_col, jupiter_radius)
-        planets.append(jupiter)
-    if 5 in planets_chosen:
-        saturn = Body(saturn_mass, centre[0], centre[1]+saturn_to_sun, saturn_speed, 0, saturn_col, saturn_radius)
-        planets.append(saturn)
-    if 6 in planets_chosen:
-        uranus = Body(uranus_mass, centre[0], centre[1]+uranus_to_sun, uranus_speed, 0, uranus_col, uranus_radius)
-        planets.append(uranus)
-    if 7 in planets_chosen:
-        neptune = Body(neptune_mass, centre[0], centre[1]+neptune_to_sun, neptune_speed, 0, neptune_col, neptune_radius)
-        planets.append(neptune)
+    if 8 in planets_chosen:
+            mercury = Body(mercury_mass, centre[0], centre[1]+mercury_to_sun, mercury_speed, 0, mercury_col, mercury_radius)
+            planets.append(mercury)
+            venus = Body(venus_mass, centre[0], centre[1]+venus_to_sun, -venus_speed, 0, venus_col, venus_radius)
+            planets.append(venus)
+            earth = Body(earth_mass, centre[0], centre[1]+earth_to_sun, earth_speed, 0, earth_col, earth_radius)
+            planets.append(earth)
+            mars = Body(mars_mass, centre[0], centre[1]+mars_to_sun, mars_speed, 0, mars_col, mars_radius)
+            jupiter = Body(jupiter_mass, centre[0], centre[1]+jupiter_to_sun, jupiter_speed, 0, jupiter_col, jupiter_radius)
+            planets.append(jupiter)
+            saturn = Body(saturn_mass, centre[0], centre[1]+saturn_to_sun, saturn_speed, 0, saturn_col, saturn_radius)
+            planets.append(saturn)
+            uranus = Body(uranus_mass, centre[0], centre[1]+uranus_to_sun, uranus_speed, 0, uranus_col, uranus_radius)
+            planets.append(uranus)
+            neptune = Body(neptune_mass, centre[0], centre[1]+neptune_to_sun, neptune_speed, 0, neptune_col, neptune_radius)
+            planets.append(neptune)
+
+    else:
+        if 0 in planets_chosen:
+            mercury = Body(mercury_mass, centre[0], centre[1]+mercury_to_sun, mercury_speed, 0, mercury_col, mercury_radius)
+            planets.append(mercury)
+        if 1 in planets_chosen:
+            venus = Body(venus_mass, centre[0], centre[1]+venus_to_sun, -venus_speed, 0, venus_col, venus_radius)
+            planets.append(venus)
+        if 2 in planets_chosen:
+            earth = Body(earth_mass, centre[0], centre[1]+earth_to_sun, earth_speed, 0, earth_col, earth_radius)
+            planets.append(earth)
+        if 3 in planets_chosen:
+            mars = Body(mars_mass, centre[0], centre[1]+mars_to_sun, mars_speed, 0, mars_col, mars_radius)
+            planets.append(mars)
+        if 4 in planets_chosen:
+            jupiter = Body(jupiter_mass, centre[0], centre[1]+jupiter_to_sun, jupiter_speed, 0, jupiter_col, jupiter_radius)
+            planets.append(jupiter)
+        if 5 in planets_chosen:
+            saturn = Body(saturn_mass, centre[0], centre[1]+saturn_to_sun, saturn_speed, 0, saturn_col, saturn_radius)
+            planets.append(saturn)
+        if 6 in planets_chosen:
+            uranus = Body(uranus_mass, centre[0], centre[1]+uranus_to_sun, uranus_speed, 0, uranus_col, uranus_radius)
+            planets.append(uranus)
+        if 7 in planets_chosen:
+            neptune = Body(neptune_mass, centre[0], centre[1]+neptune_to_sun, neptune_speed, 0, neptune_col, neptune_radius)
+            planets.append(neptune)
 
     ## List of all planets
     #planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
@@ -295,71 +312,73 @@ def solarSystem():
 def PrintInfo(p,q, planet):
     baseFrame = tk.Tk()
     baseFrame.title(planet)
+    baseFrame.wm_withdraw()
     quote1 = "The distance from " + planet + " to the Sun is: " + data_array[p][2] + " in metres." 
     quote2 = "The mass of " + planet + " is: " + data_array[p+1][2] + " in kg."
     quote3 = "The radius of " + planet + " is:" + data_array[q][2] + " in metres."
     quote = quote1 + "\n" + quote2 + "\n" + quote3
-    data = tk.Text(baseFrame)
-    data.insert(tk.END, quote)
-    data.pack()
+    messagebox.showinfo("PO", quote)
+    # data = tk.Text(baseFrame)
+    # data.insert(tk.END, quote)
+    #data.pack()
 
 
 #creates the layout on the interface
-def createInfoInterface():
-    merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo(1, 4, "Mercury"),bg = "grey1", fg = 'grey69' )
-    merc.grid(row = 1, column = 1,)
-    star3 = tk.Label(base, height = 1, width = 6, bg = 'black')
-    star3.grid(row=2, column = 0)
-    space = tk.Label(base, height = 1, width = 6, bg = "black")
-    space.grid(row=1, column = 2)
-    ven = tk.Button(base, text = "Venus", command = lambda: PrintInfo(4, 7, "Venus"), fg = 'orange red')
-    ven.grid(row=1, column = 3)
-    star = tk.Label(base, height = 1, width = 1, bg = 'black')
-    star.grid(row=2, column = 0)
-    space1 = tk.Label(base, height = 1, width = 6, bg = "black")
-    space1.grid(row=3, column = 2)
-    ear = tk.Button(base, text = "Earth", command = lambda: PrintInfo(7, 10, "Earth"), fg = 'seagreen3')
-    ear.grid(row=3, column = 1)
-    star5 = tk.Label(base, height = 1, width = 6, bg = 'black')
-    star5.grid(row=3, column = 0)
-    mar = tk.Button(base, text = "Mars", command = lambda: PrintInfo(10, 13, "Mars"), fg = 'light salmon')
-    mar.grid(row=3, column = 3)
-    star1 = tk.Label(base, height = 1, width = 1, bg = 'black')
-    star1.grid(row=4, column = 0)
-    jup = tk.Button(base, text = "Jupiter", command = lambda: PrintInfo(13, 16, "Jupiter"), fg = 'red3')
-    jup.grid(row=5, column = 1)
-    star6 = tk.Label(base, height = 1, width = 6, bg = 'black')
-    star6.grid(row=5, column = 0)
-    space3 = tk.Label(base, height = 1, width = 6, bg = "black")
-    space3.grid(row=5, column = 2)
-    sat = tk.Button(base, text = "Saturn", command = lambda: PrintInfo(16, 19, "Saturn"), fg = 'pale goldenrod')
-    sat.grid(row=5, column = 3)
-    star2 = tk.Label(base, height = 1, width = 1, bg = 'black')
-    star2.grid(row=6, column = 0)
-    ura = tk.Button(base, text = "Uranus", command = lambda: PrintInfo(19, 22, "Uranus"), fg = 'turquoise2')
-    ura.grid(row=7, column = 1)
-    star7 = tk.Label(base, height = 1, width = 6, bg = 'black')
-    star7.grid(row=7, column = 0)
-    space4 = tk.Label(base, height = 1, width = 6, bg = "black")
-    space4.grid(row=7, column = 2)
-    nep = tk.Button(base, text = "Neptune", command = lambda: PrintInfo(22, 24, "Neptune"), fg = 'blue')
-    nep.grid(row=7, column = 3)
-    space5 = tk.Label(base, height = 1, width = 6, bg = "black")
-    space5.grid(row=8, column = 2)
-    endspace = tk.Label(base, height = 1, width = 6, bg = "black")
-    endspace.grid(row=1, column = 4)
+# def createInfoInterface():
+#     merc = tk.Button(base, text = "Mercury", command = lambda: PrintInfo(1, 4, "Mercury"),bg = "grey1", fg = 'grey69' )
+#     merc.grid(row = 1, column = 1,)
+#     star3 = tk.Label(base, height = 1, width = 6, bg = 'black')
+#     star3.grid(row=2, column = 0)
+#     space = tk.Label(base, height = 1, width = 6, bg = "black")
+#     space.grid(row=1, column = 2)
+#     ven = tk.Button(base, text = "Venus", command = lambda: PrintInfo(4, 7, "Venus"), fg = 'orange red')
+#     ven.grid(row=1, column = 3)
+#     star = tk.Label(base, height = 1, width = 1, bg = 'black')
+#     star.grid(row=2, column = 0)
+#     space1 = tk.Label(base, height = 1, width = 6, bg = "black")
+#     space1.grid(row=3, column = 2)
+#     ear = tk.Button(base, text = "Earth", command = lambda: PrintInfo(7, 10, "Earth"), fg = 'seagreen3')
+#     ear.grid(row=3, column = 1)
+#     star5 = tk.Label(base, height = 1, width = 6, bg = 'black')
+#     star5.grid(row=3, column = 0)
+#     mar = tk.Button(base, text = "Mars", command = lambda: PrintInfo(10, 13, "Mars"), fg = 'light salmon')
+#     mar.grid(row=3, column = 3)
+#     star1 = tk.Label(base, height = 1, width = 1, bg = 'black')
+#     star1.grid(row=4, column = 0)
+#     jup = tk.Button(base, text = "Jupiter", command = lambda: PrintInfo(13, 16, "Jupiter"), fg = 'red3')
+#     jup.grid(row=5, column = 1)
+#     star6 = tk.Label(base, height = 1, width = 6, bg = 'black')
+#     star6.grid(row=5, column = 0)
+#     space3 = tk.Label(base, height = 1, width = 6, bg = "black")
+#     space3.grid(row=5, column = 2)
+#     sat = tk.Button(base, text = "Saturn", command = lambda: PrintInfo(16, 19, "Saturn"), fg = 'pale goldenrod')
+#     sat.grid(row=5, column = 3)
+#     star2 = tk.Label(base, height = 1, width = 1, bg = 'black')
+#     star2.grid(row=6, column = 0)
+#     ura = tk.Button(base, text = "Uranus", command = lambda: PrintInfo(19, 22, "Uranus"), fg = 'turquoise2')
+#     ura.grid(row=7, column = 1)
+#     star7 = tk.Label(base, height = 1, width = 6, bg = 'black')
+#     star7.grid(row=7, column = 0)
+#     space4 = tk.Label(base, height = 1, width = 6, bg = "black")
+#     space4.grid(row=7, column = 2)
+#     nep = tk.Button(base, text = "Neptune", command = lambda: PrintInfo(22, 24, "Neptune"), fg = 'blue')
+#     nep.grid(row=7, column = 3)
+#     space5 = tk.Label(base, height = 1, width = 6, bg = "black")
+#     space5.grid(row=8, column = 2)
+#     endspace = tk.Label(base, height = 1, width = 6, bg = "black")
+#     endspace.grid(row=1, column = 4)
 
 
 btn = tk.Button(root, text ='Done', command = lambda: solarSystem())
 btn.grid(row = 2, column = 0)
        
-base = tk.Tk()
-base.title("Select a planet to view it's information")
-base["bg"] = "black"
-star4= tk.Label(base, height = 1, width = 1, bg = "black")
-star4.grid(row=0, column = 1)
-createInfoInterface()
-base.mainloop()
+# base = tk.Tk()
+# base.title("Select a planet to view it's information")
+# base["bg"] = "black"
+# star4= tk.Label(base, height = 1, width = 1, bg = "black")
+# star4.grid(row=0, column = 1)
+# createInfoInterface()
+# base.mainloop()
 
 root.mainloop()
 
