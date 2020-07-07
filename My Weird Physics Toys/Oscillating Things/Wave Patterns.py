@@ -179,9 +179,9 @@ for i in range(bodiesNum):
               (0, 0),
               (0, 0),
               (0, 0),
-              (0, 100),
-              (0, 0.5 * i),
-              (0, 0.05))
+              (0, 400),
+              (0, 0.1 * i),
+              (0, 0.02))
     bodies.append(b)
 
 ## Main runtime loop
