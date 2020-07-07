@@ -43,9 +43,9 @@ p1_length = 400 ## Pendulum lengths
 p2_length = 300
 
 p1_ang = math.pi/2 ## Pendulum starting angles
-p2_ang = math.pi/6
+p2_ang = math.pi/12
 
-p1_colour = PINK ## Smoke colours
+p1_colour = RED ## Smoke colours
 p2_colour = LIGHT_BLUE
 
 ## Return magnitude, direction of a given vector
