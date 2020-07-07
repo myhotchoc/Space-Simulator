@@ -28,13 +28,13 @@ framerate = 60 ## frames per second
 
 v_lim = 0.5 ## max velocity of particles
 particle_num = 30 ## Particles created per system
-offset = 0.125 ## Maximum offset particle is moved by
-particle_size = 1 ## size of particles
+offset = 0.05 ## Maximum offset particle is moved by
+particle_size = 0.3 ## size of particles
 decay_speed = 5 ## speed of decay
 
 padding = 20
 fwork_decay = 3
-fword_freq = 0.95
+fword_freq = 0.936
 pellet_size = 2
 
 min_pellet_lifespan = 40
