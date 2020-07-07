@@ -180,7 +180,7 @@ for i in range(bodiesNum):
               (0, 0),
               (0, 0),
               (0, 400),
-              (0, 0.1 * i),
+              (0, 90 * i),
               (0, 0.02))
     bodies.append(b)
 
