@@ -26,10 +26,10 @@ g = 0.1  ## acceleration due to gravity
 framerate = 60 ## frames per second
 
 v_lim = 0.5 ## max velocity of particles
-particle_num = 50 ## Particles created per system
+particle_num = 100 ## Particles created per system
 offset = 1.5 ## Maximum offset particle is moved by
 particle_size = 5 ## size of particles
-decay_speed = 2 ## speed of decay
+decay_speed = 1.0 ## speed of decay
 
 ## Setting window size, defining screen
 win_size = (900, 900)
