@@ -5,6 +5,9 @@ Created on Sun Jun 14 07:50:32 2020
 @author: Danny
 """
 
+## NOT WORKING COS SPRINGS ARE STUPID ##
+
+
 import pygame
 import math
 import random
