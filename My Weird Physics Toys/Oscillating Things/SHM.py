@@ -216,7 +216,7 @@ class Body(object):
 bodies = []
 
 ## Make 30 random objects
-for i in range(50):
+for i in range(10):
     b = Body((random.randint(0,255), random.randint(0,255), random.randint(0,255)), #colour
              20, centre, ## radius, screen
               (0, 0), # vel, acc, force
