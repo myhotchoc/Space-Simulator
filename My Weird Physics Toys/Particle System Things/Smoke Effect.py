@@ -28,11 +28,11 @@ g = 0.1  ## acceleration due to gravity
 framerate = 60 ## frames per second
 
 v_lim = 3 ## max velocity of particles
-particle_num = 10 ## Particles created per system
+particle_num = 5 ## Particles created per system
 offset = 20 ## Maximum offset particle is moved by
 particle_size = 180 ## size of particles
-decay_speed = 3 ## speed of decay
-smoke_colour = PINK ## Colour of smoke
+decay_speed = 4 ## speed of decay
+smoke_colour = LIME ## Colour of smoke
 
 ## Setting window size, defining screen
 win_size = (900, 900)
