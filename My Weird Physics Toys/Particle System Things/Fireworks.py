@@ -28,14 +28,14 @@ framerate = 60 ## frames per second
 
 v_lim = 0.5 ## max velocity of particles
 particle_num = 30 ## Particles created per system
-offset = 0.05 ## Maximum offset particle is moved by
-particle_size = 0.3 ## size of particles
+offset = 0.2 ## Maximum offset particle is moved by
+particle_size = 1 ## size of particles
 decay_speed = 5 ## speed of decay
 
 padding = 20
-fwork_decay = 3
+fwork_decay = 5
 fword_freq = 0.936
-pellet_size = 2
+pellet_size = 0.4
 
 min_pellet_lifespan = 40
 max_pellet_lifespan = 120
@@ -43,8 +43,8 @@ max_pellet_lifespan = 120
 min_pellet_speed = -7
 max_pellet_speed = -1
 
-min_fwork_decay = 2.5
-max_fwork_decay = 7
+min_fwork_decay = 4
+max_fwork_decay = 8
 
 ## Setting window size, defining screen
 win_size = (900, 900)
@@ -229,6 +229,15 @@ class Particle(object):
     def replacePrevPos(self):
         pygame.draw.circle(screen, BLACK, self.prevPos, self.radius)
     
+    def special(self):
+        pass
+    
+class Multicolour(Particle):
+    def __init__(self, col, mass, p, v, a, f, lifespan):
+        super().__init__(col, mass, p, v, a, f, lifespan)
+    
+    def special(self):
+        self.col = [random.randint(0,255), random.randint(0,255), random.randint(0,255)]
 
 ## Particle system class
 class ParticleSystem(object):
@@ -244,18 +253,30 @@ class ParticleSystem(object):
     ## Method to generate Particle objects
     def makeEmitter(self):
         
-        ## Makes particle_num Particle objects
-        for j in range(particle_num):
-    
-            ## Generate new object with appropriate attributes, random initial velocity
-            p = Particle([self.c[0], self.c[1], self.c[2]],
-                         particle_size, self.origin,
-                     (random.uniform(-v_lim, 3*v_lim), random.uniform(-v_lim, 3*v_lim)),
+        choice = random.random()
+        if choice >= 0.9:
+            for j in range(particle_num):
+                p = Multicolour([self.c[0], self.c[1], self.c[2]],
+                                particle_size, self.origin,
+                                (random.uniform(-v_lim, 3*v_lim), random.uniform(-v_lim, 3*v_lim)),
                      (0, 0),
                      (0, 0),
                      255)
-            ## Adds new particle to list of all particles in system
-            self.particles.append(p)
+                self.particles.append(p)
+        
+        else:
+            ## Makes particle_num Particle objects
+            for j in range(particle_num):
+        
+                ## Generate new object with appropriate attributes, random initial velocity
+                p = Particle([self.c[0], self.c[1], self.c[2]],
+                             particle_size, self.origin,
+                         (random.uniform(-v_lim, 3*v_lim), random.uniform(-v_lim, 3*v_lim)),
+                         (0, 0),
+                         (0, 0),
+                         255)
+                ## Adds new particle to list of all particles in system
+                self.particles.append(p)
             
     ## Method to move and update the system
     def moveParticles(self):
@@ -278,6 +299,7 @@ class ParticleSystem(object):
                  
             ## Run movement algorithm
             particle.move()
+            particle.special()
             
             ## Draw particle to screen
             pygame.draw.circle(screen, particle.col, (int(particle.px), int(particle.py)), particle.radius)
@@ -383,8 +405,8 @@ while win_loop:
         if pellet.lifespan == 0:
             pellets.remove(pellet)
             pygame.draw.circle(screen, BLACK, (int(pellet.px), int(pellet.py)), pellet.radius)
-            
             rand_col = [random.randint(0,255), random.randint(0,255), random.randint(0,255)]
+            
             firework = ParticleSystem(pellet.prevPos, rand_col)
             firework.makeEmitter()
             systems.append(firework)
