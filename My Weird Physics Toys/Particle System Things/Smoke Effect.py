@@ -30,9 +30,9 @@ framerate = 60 ## frames per second
 v_lim = 3 ## max velocity of particles
 particle_num = 10 ## Particles created per system
 offset = 20 ## Maximum offset particle is moved by
-particle_size = 180 ## size of particles
-decay_speed = 3 ## speed of decay
-smoke_colour = BLUE ## Colour of smoke
+particle_size = 130 ## size of particles
+decay_speed = 2.7 ## speed of decay
+smoke_colour = PINK ## Colour of smoke
 
 ## Setting window size, defining screen
 win_size = (900, 900)
