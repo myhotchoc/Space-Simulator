@@ -134,8 +134,8 @@ class Attracter(Body):
         
         fx, fy = limit(fx, fy, f_limit)
         
-        body.fx += fx
-        body.fy += fy
+        body.fx += fx# - body.ax
+        body.fy += fy #- body.ay
         #print (body.fx, body.fy)
         
 class Oscillator(object):
@@ -167,10 +167,10 @@ a1 = Attracter(500, centre, WHITE)
 bodies = []
 attracters = [a1]
 
-for i in range(30):
+for i in range(15):
     b = Body((random.randint(0,255), random.randint(0,255), random.randint(0,255)),
              30, (random.randint(250, 650), random.randint(250, 650)),
-             (random.randint(0, 8), random.randint(0,8)),
+             (random.randint(2, 10), random.randint(2,10)),
              (0, 0),
              (0, 0))
     bodies.append(b)
